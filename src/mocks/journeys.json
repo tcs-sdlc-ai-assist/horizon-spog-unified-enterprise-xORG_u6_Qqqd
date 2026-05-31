@@ -1,0 +1,1481 @@
+{
+  "journeys": [
+    {
+      "id": "member-enrollment",
+      "name": "Member Enrollment",
+      "description": "End-to-end member enrollment process from application submission through eligibility verification and plan activation",
+      "steps": [
+        {
+          "id": "me-step-1",
+          "name": "Application Submission",
+          "description": "Member submits enrollment application via web or mobile",
+          "order": 1,
+          "application": "ep-member-onboarding",
+          "status": "healthy",
+          "latencyMs": 380
+        },
+        {
+          "id": "me-step-2",
+          "name": "Identity Verification",
+          "description": "Verify member identity through enterprise identity provider",
+          "order": 2,
+          "application": "ia-identity-provider",
+          "status": "healthy",
+          "latencyMs": 55
+        },
+        {
+          "id": "me-step-3",
+          "name": "Eligibility Check",
+          "description": "Validate member eligibility against plan rules and external sources",
+          "order": 3,
+          "application": "ep-eligibility-service",
+          "status": "healthy",
+          "latencyMs": 150
+        },
+        {
+          "id": "me-step-4",
+          "name": "Enrollment Processing",
+          "description": "Process enrollment record and activate member plan",
+          "order": 4,
+          "application": "ep-enrollment-engine",
+          "status": "degraded",
+          "latencyMs": 490
+        },
+        {
+          "id": "me-step-5",
+          "name": "Event Publishing",
+          "description": "Publish enrollment event to downstream systems via Kafka",
+          "order": 5,
+          "application": "es-kafka-platform",
+          "status": "healthy",
+          "latencyMs": 12
+        },
+        {
+          "id": "me-step-6",
+          "name": "Billing Account Setup",
+          "description": "Create billing account and generate initial premium invoice",
+          "order": 6,
+          "application": "bp-billing-engine",
+          "status": "healthy",
+          "latencyMs": 120
+        }
+      ],
+      "dependencies": [
+        "ep-member-onboarding",
+        "ia-identity-provider",
+        "ep-eligibility-service",
+        "ep-enrollment-engine",
+        "es-kafka-platform",
+        "bp-billing-engine",
+        "ag-api-gateway"
+      ],
+      "impactedApplications": [
+        "ep-member-onboarding",
+        "ep-enrollment-engine",
+        "ep-eligibility-service",
+        "bp-billing-engine",
+        "es-kafka-platform",
+        "ia-identity-provider",
+        "ag-api-gateway",
+        "mp-web-app",
+        "mp-mobile-ios",
+        "mp-mobile-android"
+      ],
+      "healthStatus": {
+        "overall": "amber",
+        "availability": 99.82,
+        "errorRate": 0.12,
+        "p99LatencyMs": 1207,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "businessImpact": {
+        "score": 95,
+        "level": "critical",
+        "revenueImpact": "high",
+        "memberImpact": "high",
+        "regulatoryRisk": "medium",
+        "description": "Directly impacts new member acquisition and revenue growth. Enrollment failures during open enrollment periods can result in regulatory penalties."
+      },
+      "scenarioButtons": [
+        {
+          "id": "me-scenario-1",
+          "label": "Simulate Enrollment Spike",
+          "description": "Simulate 10x enrollment volume during open enrollment period",
+          "type": "load"
+        },
+        {
+          "id": "me-scenario-2",
+          "label": "Eligibility Service Outage",
+          "description": "Simulate eligibility verification service becoming unavailable",
+          "type": "failure"
+        },
+        {
+          "id": "me-scenario-3",
+          "label": "Database Failover",
+          "description": "Simulate Oracle DB failover for enrollment engine",
+          "type": "infrastructure"
+        }
+      ]
+    },
+    {
+      "id": "claims-processing",
+      "name": "Claims Processing",
+      "description": "Complete claims lifecycle from submission through adjudication, payment, and EOB generation",
+      "steps": [
+        {
+          "id": "cp-step-1",
+          "name": "Claim Submission",
+          "description": "Receive claim via EDI 837 transaction or provider portal",
+          "order": 1,
+          "application": "cp-claims-intake",
+          "status": "degraded",
+          "latencyMs": 520
+        },
+        {
+          "id": "cp-step-2",
+          "name": "EDI Processing",
+          "description": "Parse and validate EDI transaction format",
+          "order": 2,
+          "application": "edi-transaction-hub",
+          "status": "degraded",
+          "latencyMs": 850
+        },
+        {
+          "id": "cp-step-3",
+          "name": "Event Routing",
+          "description": "Route claim event to adjudication engine via Kafka",
+          "order": 3,
+          "application": "es-kafka-platform",
+          "status": "healthy",
+          "latencyMs": 12
+        },
+        {
+          "id": "cp-step-4",
+          "name": "Claims Adjudication",
+          "description": "Apply business rules and adjudicate claim using Drools engine",
+          "order": 4,
+          "application": "cp-claims-engine",
+          "status": "critical",
+          "latencyMs": 1800
+        },
+        {
+          "id": "cp-step-5",
+          "name": "Payment Processing",
+          "description": "Process provider payment through billing engine",
+          "order": 5,
+          "application": "bp-billing-engine",
+          "status": "healthy",
+          "latencyMs": 120
+        },
+        {
+          "id": "cp-step-6",
+          "name": "EOB Generation",
+          "description": "Generate Explanation of Benefits document for member",
+          "order": 6,
+          "application": "cp-eob-generator",
+          "status": "healthy",
+          "latencyMs": 3200
+        },
+        {
+          "id": "cp-step-7",
+          "name": "Data Lake Ingestion",
+          "description": "Ingest claims data into enterprise data lake for analytics",
+          "order": 7,
+          "application": "dp-data-lake",
+          "status": "healthy",
+          "latencyMs": 2100
+        }
+      ],
+      "dependencies": [
+        "cp-claims-intake",
+        "edi-transaction-hub",
+        "es-kafka-platform",
+        "cp-claims-engine",
+        "bp-billing-engine",
+        "cp-eob-generator",
+        "dp-data-lake",
+        "ag-api-gateway"
+      ],
+      "impactedApplications": [
+        "cp-claims-intake",
+        "cp-claims-engine",
+        "cp-eob-generator",
+        "edi-transaction-hub",
+        "bp-billing-engine",
+        "bp-payment-gateway",
+        "es-kafka-platform",
+        "dp-data-lake",
+        "ag-api-gateway",
+        "cr-provider-portal"
+      ],
+      "healthStatus": {
+        "overall": "red",
+        "availability": 99.45,
+        "errorRate": 0.45,
+        "p99LatencyMs": 8502,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "businessImpact": {
+        "score": 99,
+        "level": "critical",
+        "revenueImpact": "critical",
+        "memberImpact": "high",
+        "regulatoryRisk": "high",
+        "description": "Core revenue-generating process. Claims adjudication failures directly impact provider payments, member satisfaction, and regulatory compliance. SLA breaches trigger financial penalties."
+      },
+      "scenarioButtons": [
+        {
+          "id": "cp-scenario-1",
+          "label": "Adjudication Engine Failure",
+          "description": "Simulate complete claims adjudication engine outage",
+          "type": "failure"
+        },
+        {
+          "id": "cp-scenario-2",
+          "label": "EDI Batch Surge",
+          "description": "Simulate large EDI batch file processing (100K+ claims)",
+          "type": "load"
+        },
+        {
+          "id": "cp-scenario-3",
+          "label": "Rule Engine Memory Leak",
+          "description": "Simulate Drools rule engine memory leak causing GC pauses",
+          "type": "degradation"
+        }
+      ]
+    },
+    {
+      "id": "provider-search",
+      "name": "Provider Search",
+      "description": "Member searches for in-network providers by specialty, location, and availability through web and mobile channels",
+      "steps": [
+        {
+          "id": "ps-step-1",
+          "name": "Authentication",
+          "description": "Authenticate member session via identity provider",
+          "order": 1,
+          "application": "ia-identity-provider",
+          "status": "healthy",
+          "latencyMs": 55
+        },
+        {
+          "id": "ps-step-2",
+          "name": "API Gateway Routing",
+          "description": "Route search request through enterprise API gateway",
+          "order": 2,
+          "application": "ag-api-gateway",
+          "status": "healthy",
+          "latencyMs": 45
+        },
+        {
+          "id": "ps-step-3",
+          "name": "BFF Query Processing",
+          "description": "Process GraphQL query in member portal BFF",
+          "order": 3,
+          "application": "mp-bff",
+          "status": "healthy",
+          "latencyMs": 180
+        },
+        {
+          "id": "ps-step-4",
+          "name": "Provider Directory Search",
+          "description": "Search provider directory using Elasticsearch",
+          "order": 4,
+          "application": "cw-provider-directory",
+          "status": "healthy",
+          "latencyMs": 280
+        },
+        {
+          "id": "ps-step-5",
+          "name": "Network Adequacy Check",
+          "description": "Verify provider network adequacy for member's plan",
+          "order": 5,
+          "application": "cr-network-api",
+          "status": "healthy",
+          "latencyMs": 195
+        },
+        {
+          "id": "ps-step-6",
+          "name": "Results Rendering",
+          "description": "Render search results in member portal UI",
+          "order": 6,
+          "application": "mp-web-app",
+          "status": "healthy",
+          "latencyMs": 245
+        }
+      ],
+      "dependencies": [
+        "ia-identity-provider",
+        "ag-api-gateway",
+        "mp-bff",
+        "cw-provider-directory",
+        "cr-network-api",
+        "mp-web-app"
+      ],
+      "impactedApplications": [
+        "mp-web-app",
+        "mp-mobile-ios",
+        "mp-mobile-android",
+        "mp-bff",
+        "cw-provider-directory",
+        "cr-network-api",
+        "ag-api-gateway",
+        "ia-identity-provider",
+        "cw-main-site"
+      ],
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.93,
+        "errorRate": 0.04,
+        "p99LatencyMs": 1000,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "businessImpact": {
+        "score": 78,
+        "level": "high",
+        "revenueImpact": "medium",
+        "memberImpact": "high",
+        "regulatoryRisk": "medium",
+        "description": "Key member self-service function. Provider search failures drive call center volume and reduce member satisfaction. Stale provider data can lead to regulatory findings."
+      },
+      "scenarioButtons": [
+        {
+          "id": "ps-scenario-1",
+          "label": "Elasticsearch Cluster Failure",
+          "description": "Simulate Elasticsearch cluster going yellow/red",
+          "type": "failure"
+        },
+        {
+          "id": "ps-scenario-2",
+          "label": "Provider Data Sync Failure",
+          "description": "Simulate provider directory data sync pipeline failure",
+          "type": "degradation"
+        },
+        {
+          "id": "ps-scenario-3",
+          "label": "Peak Search Traffic",
+          "description": "Simulate 5x normal search traffic during open enrollment",
+          "type": "load"
+        }
+      ]
+    },
+    {
+      "id": "billing-cycle",
+      "name": "Billing Cycle",
+      "description": "Monthly premium billing cycle including invoice generation, payment processing, and reconciliation",
+      "steps": [
+        {
+          "id": "bc-step-1",
+          "name": "Invoice Generation",
+          "description": "Generate monthly premium invoices for all active members",
+          "order": 1,
+          "application": "bp-billing-engine",
+          "status": "healthy",
+          "latencyMs": 120
+        },
+        {
+          "id": "bc-step-2",
+          "name": "Payment Collection",
+          "description": "Process automated payment collection via payment gateway",
+          "order": 2,
+          "application": "bp-payment-gateway",
+          "status": "healthy",
+          "latencyMs": 95
+        },
+        {
+          "id": "bc-step-3",
+          "name": "Event Publishing",
+          "description": "Publish billing events for downstream reconciliation",
+          "order": 3,
+          "application": "es-kafka-platform",
+          "status": "healthy",
+          "latencyMs": 12
+        },
+        {
+          "id": "bc-step-4",
+          "name": "ERP Reconciliation",
+          "description": "Reconcile payments in SAP ERP financial system",
+          "order": 4,
+          "application": "fin-erp",
+          "status": "healthy",
+          "latencyMs": 1100
+        },
+        {
+          "id": "bc-step-5",
+          "name": "Data Lake Sync",
+          "description": "Sync billing data to enterprise data lake for reporting",
+          "order": 5,
+          "application": "dp-data-lake",
+          "status": "healthy",
+          "latencyMs": 2100
+        },
+        {
+          "id": "bc-step-6",
+          "name": "Executive Reporting",
+          "description": "Update executive dashboard with billing metrics",
+          "order": 6,
+          "application": "bi-executive-dashboard",
+          "status": "healthy",
+          "latencyMs": 900
+        }
+      ],
+      "dependencies": [
+        "bp-billing-engine",
+        "bp-payment-gateway",
+        "es-kafka-platform",
+        "fin-erp",
+        "dp-data-lake",
+        "bi-executive-dashboard"
+      ],
+      "impactedApplications": [
+        "bp-billing-engine",
+        "bp-payment-gateway",
+        "fin-erp",
+        "es-kafka-platform",
+        "dp-data-lake",
+        "bi-executive-dashboard",
+        "bi-analytics-hub",
+        "mp-web-app"
+      ],
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.99,
+        "errorRate": 0.005,
+        "p99LatencyMs": 4327,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "businessImpact": {
+        "score": 96,
+        "level": "critical",
+        "revenueImpact": "critical",
+        "memberImpact": "medium",
+        "regulatoryRisk": "high",
+        "description": "Direct revenue collection process. Billing failures result in delayed cash flow, member confusion, and potential regulatory issues with premium collection timelines."
+      },
+      "scenarioButtons": [
+        {
+          "id": "bc-scenario-1",
+          "label": "Payment Gateway Outage",
+          "description": "Simulate payment gateway becoming unavailable during billing run",
+          "type": "failure"
+        },
+        {
+          "id": "bc-scenario-2",
+          "label": "Month-End Batch Conflict",
+          "description": "Simulate batch job scheduling conflict during month-end close",
+          "type": "degradation"
+        },
+        {
+          "id": "bc-scenario-3",
+          "label": "ERP Sync Failure",
+          "description": "Simulate SAP ERP reconciliation sync failure",
+          "type": "failure"
+        }
+      ]
+    },
+    {
+      "id": "prior-authorization",
+      "name": "Prior Authorization",
+      "description": "Clinical prior authorization workflow from request submission through clinical review and determination",
+      "steps": [
+        {
+          "id": "pa-step-1",
+          "name": "Auth Request Submission",
+          "description": "Provider submits prior authorization request via portal",
+          "order": 1,
+          "application": "cr-provider-portal",
+          "status": "degraded",
+          "latencyMs": 580
+        },
+        {
+          "id": "pa-step-2",
+          "name": "API Gateway Routing",
+          "description": "Route request through enterprise API gateway",
+          "order": 2,
+          "application": "ag-api-gateway",
+          "status": "healthy",
+          "latencyMs": 45
+        },
+        {
+          "id": "pa-step-3",
+          "name": "Eligibility Verification",
+          "description": "Verify member eligibility and benefit coverage",
+          "order": 3,
+          "application": "ep-eligibility-service",
+          "status": "healthy",
+          "latencyMs": 150
+        },
+        {
+          "id": "pa-step-4",
+          "name": "Clinical Rules Evaluation",
+          "description": "Evaluate clinical decision support rules for auto-determination",
+          "order": 4,
+          "application": "um-prior-auth",
+          "status": "degraded",
+          "latencyMs": 680
+        },
+        {
+          "id": "pa-step-5",
+          "name": "Clinical Review Queue",
+          "description": "Route to clinical reviewer if auto-determination not possible",
+          "order": 5,
+          "application": "um-review-portal",
+          "status": "healthy",
+          "latencyMs": 340
+        },
+        {
+          "id": "pa-step-6",
+          "name": "Determination Notification",
+          "description": "Notify provider and member of authorization determination",
+          "order": 6,
+          "application": "es-kafka-platform",
+          "status": "healthy",
+          "latencyMs": 12
+        }
+      ],
+      "dependencies": [
+        "cr-provider-portal",
+        "ag-api-gateway",
+        "ep-eligibility-service",
+        "um-prior-auth",
+        "um-review-portal",
+        "es-kafka-platform",
+        "ia-identity-provider"
+      ],
+      "impactedApplications": [
+        "cr-provider-portal",
+        "um-prior-auth",
+        "um-review-portal",
+        "ep-eligibility-service",
+        "ag-api-gateway",
+        "ia-identity-provider",
+        "es-kafka-platform",
+        "cp-claims-engine"
+      ],
+      "healthStatus": {
+        "overall": "amber",
+        "availability": 99.78,
+        "errorRate": 0.16,
+        "p99LatencyMs": 1807,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "businessImpact": {
+        "score": 88,
+        "level": "critical",
+        "revenueImpact": "high",
+        "memberImpact": "high",
+        "regulatoryRisk": "high",
+        "description": "Regulatory-mandated turnaround times for prior authorization decisions. Delays impact member care access and can result in CMS penalties and state regulatory action."
+      },
+      "scenarioButtons": [
+        {
+          "id": "pa-scenario-1",
+          "label": "Clinical Rules Engine Failure",
+          "description": "Simulate clinical decision support rules engine outage",
+          "type": "failure"
+        },
+        {
+          "id": "pa-scenario-2",
+          "label": "Redis Cache Eviction Storm",
+          "description": "Simulate Redis cache eviction causing DB fallback for all requests",
+          "type": "degradation"
+        },
+        {
+          "id": "pa-scenario-3",
+          "label": "High Volume Auth Requests",
+          "description": "Simulate 3x normal prior auth request volume",
+          "type": "load"
+        }
+      ]
+    },
+    {
+      "id": "pharmacy-claims",
+      "name": "Pharmacy Claims",
+      "description": "Real-time pharmacy benefit claim adjudication at point of sale including formulary lookup and copay calculation",
+      "steps": [
+        {
+          "id": "pc-step-1",
+          "name": "POS Claim Receipt",
+          "description": "Receive real-time pharmacy claim from point-of-sale system",
+          "order": 1,
+          "application": "pbm-claims-processor",
+          "status": "degraded",
+          "latencyMs": 720
+        },
+        {
+          "id": "pc-step-2",
+          "name": "Formulary Lookup",
+          "description": "Check drug formulary status and coverage tier",
+          "order": 2,
+          "application": "pbm-formulary-service",
+          "status": "healthy",
+          "latencyMs": 210
+        },
+        {
+          "id": "pc-step-3",
+          "name": "Eligibility Verification",
+          "description": "Verify member pharmacy benefit eligibility",
+          "order": 3,
+          "application": "ep-eligibility-service",
+          "status": "healthy",
+          "latencyMs": 150
+        },
+        {
+          "id": "pc-step-4",
+          "name": "Claim Adjudication",
+          "description": "Adjudicate pharmacy claim and calculate member copay",
+          "order": 4,
+          "application": "pbm-claims-processor",
+          "status": "degraded",
+          "latencyMs": 720
+        },
+        {
+          "id": "pc-step-5",
+          "name": "Event Publishing",
+          "description": "Publish pharmacy claim event for downstream processing",
+          "order": 5,
+          "application": "es-kafka-platform",
+          "status": "healthy",
+          "latencyMs": 12
+        },
+        {
+          "id": "pc-step-6",
+          "name": "Claims Integration",
+          "description": "Integrate pharmacy claim with medical claims engine",
+          "order": 6,
+          "application": "cp-claims-engine",
+          "status": "critical",
+          "latencyMs": 1800
+        }
+      ],
+      "dependencies": [
+        "pbm-claims-processor",
+        "pbm-formulary-service",
+        "ep-eligibility-service",
+        "es-kafka-platform",
+        "cp-claims-engine",
+        "ag-api-gateway"
+      ],
+      "impactedApplications": [
+        "pbm-claims-processor",
+        "pbm-formulary-service",
+        "ep-eligibility-service",
+        "es-kafka-platform",
+        "cp-claims-engine",
+        "ag-api-gateway",
+        "dp-data-lake"
+      ],
+      "healthStatus": {
+        "overall": "amber",
+        "availability": 99.79,
+        "errorRate": 0.15,
+        "p99LatencyMs": 3612,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "businessImpact": {
+        "score": 92,
+        "level": "critical",
+        "revenueImpact": "high",
+        "memberImpact": "critical",
+        "regulatoryRisk": "high",
+        "description": "Real-time point-of-sale adjudication directly impacts member access to medications. Failures at pharmacy counter create immediate member dissatisfaction and potential health risks."
+      },
+      "scenarioButtons": [
+        {
+          "id": "pc-scenario-1",
+          "label": "Formulary Cache Failure",
+          "description": "Simulate formulary lookup cache becoming stale after refresh failure",
+          "type": "degradation"
+        },
+        {
+          "id": "pc-scenario-2",
+          "label": "PBM Processor Outage",
+          "description": "Simulate complete PBM claims processor outage",
+          "type": "failure"
+        },
+        {
+          "id": "pc-scenario-3",
+          "label": "Peak Prescription Volume",
+          "description": "Simulate Monday morning peak prescription fill volume",
+          "type": "load"
+        }
+      ]
+    },
+    {
+      "id": "referral-management",
+      "name": "Referral Management",
+      "description": "Provider-to-provider referral workflow from creation through tracking and care coordination",
+      "steps": [
+        {
+          "id": "rm-step-1",
+          "name": "Referral Creation",
+          "description": "Provider creates referral request in Care Radius portal",
+          "order": 1,
+          "application": "cr-provider-portal",
+          "status": "degraded",
+          "latencyMs": 580
+        },
+        {
+          "id": "rm-step-2",
+          "name": "Network Validation",
+          "description": "Validate referred provider is in-network for member's plan",
+          "order": 2,
+          "application": "cr-network-api",
+          "status": "healthy",
+          "latencyMs": 195
+        },
+        {
+          "id": "rm-step-3",
+          "name": "Referral Processing",
+          "description": "Process referral through referral management engine",
+          "order": 3,
+          "application": "cr-referral-engine",
+          "status": "degraded",
+          "latencyMs": 620
+        },
+        {
+          "id": "rm-step-4",
+          "name": "Authorization Check",
+          "description": "Check if referral requires prior authorization",
+          "order": 4,
+          "application": "um-prior-auth",
+          "status": "degraded",
+          "latencyMs": 680
+        },
+        {
+          "id": "rm-step-5",
+          "name": "Notification Dispatch",
+          "description": "Notify referred provider and member of referral",
+          "order": 5,
+          "application": "es-kafka-platform",
+          "status": "healthy",
+          "latencyMs": 12
+        }
+      ],
+      "dependencies": [
+        "cr-provider-portal",
+        "cr-network-api",
+        "cr-referral-engine",
+        "um-prior-auth",
+        "es-kafka-platform",
+        "ag-api-gateway",
+        "ia-identity-provider"
+      ],
+      "impactedApplications": [
+        "cr-provider-portal",
+        "cr-referral-engine",
+        "cr-network-api",
+        "um-prior-auth",
+        "es-kafka-platform",
+        "ag-api-gateway",
+        "ia-identity-provider"
+      ],
+      "healthStatus": {
+        "overall": "amber",
+        "availability": 99.65,
+        "errorRate": 0.28,
+        "p99LatencyMs": 2087,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "businessImpact": {
+        "score": 72,
+        "level": "high",
+        "revenueImpact": "medium",
+        "memberImpact": "high",
+        "regulatoryRisk": "medium",
+        "description": "Impacts care coordination and member access to specialty services. Referral delays can affect clinical outcomes and member satisfaction scores."
+      },
+      "scenarioButtons": [
+        {
+          "id": "rm-scenario-1",
+          "label": "Referral Engine Timeout",
+          "description": "Simulate referral engine timeout on large batch processing",
+          "type": "degradation"
+        },
+        {
+          "id": "rm-scenario-2",
+          "label": "Duplicate Referral Detection Failure",
+          "description": "Simulate idempotency key enforcement failure",
+          "type": "failure"
+        },
+        {
+          "id": "rm-scenario-3",
+          "label": "Network Data Stale",
+          "description": "Simulate provider network data becoming stale",
+          "type": "degradation"
+        }
+      ]
+    },
+    {
+      "id": "member-portal-login",
+      "name": "Member Portal Login",
+      "description": "Member authentication and dashboard access across web and mobile channels",
+      "steps": [
+        {
+          "id": "ml-step-1",
+          "name": "Login Request",
+          "description": "Member initiates login via web or mobile application",
+          "order": 1,
+          "application": "mp-web-app",
+          "status": "healthy",
+          "latencyMs": 245
+        },
+        {
+          "id": "ml-step-2",
+          "name": "SSO Authentication",
+          "description": "Authenticate via enterprise identity provider (Okta SSO)",
+          "order": 2,
+          "application": "ia-identity-provider",
+          "status": "healthy",
+          "latencyMs": 55
+        },
+        {
+          "id": "ml-step-3",
+          "name": "Authorization Check",
+          "description": "Verify member role and permissions via RBAC service",
+          "order": 3,
+          "application": "ia-rbac-service",
+          "status": "healthy",
+          "latencyMs": 28
+        },
+        {
+          "id": "ml-step-4",
+          "name": "Dashboard Data Load",
+          "description": "Load personalized dashboard data via BFF GraphQL queries",
+          "order": 4,
+          "application": "mp-bff",
+          "status": "healthy",
+          "latencyMs": 180
+        },
+        {
+          "id": "ml-step-5",
+          "name": "Dashboard Rendering",
+          "description": "Render member dashboard with claims, benefits, and notifications",
+          "order": 5,
+          "application": "mp-web-app",
+          "status": "healthy",
+          "latencyMs": 245
+        }
+      ],
+      "dependencies": [
+        "mp-web-app",
+        "ia-identity-provider",
+        "ia-rbac-service",
+        "mp-bff",
+        "ag-api-gateway"
+      ],
+      "impactedApplications": [
+        "mp-web-app",
+        "mp-mobile-ios",
+        "mp-mobile-android",
+        "mp-bff",
+        "ia-identity-provider",
+        "ia-rbac-service",
+        "ag-api-gateway"
+      ],
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.97,
+        "errorRate": 0.02,
+        "p99LatencyMs": 753,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "businessImpact": {
+        "score": 85,
+        "level": "high",
+        "revenueImpact": "medium",
+        "memberImpact": "critical",
+        "regulatoryRisk": "low",
+        "description": "Gateway to all member self-service functions. Login failures drive call center volume and directly impact member satisfaction and digital engagement metrics."
+      },
+      "scenarioButtons": [
+        {
+          "id": "ml-scenario-1",
+          "label": "Identity Provider Rate Limiting",
+          "description": "Simulate Okta rate limiting during peak morning login window",
+          "type": "degradation"
+        },
+        {
+          "id": "ml-scenario-2",
+          "label": "RBAC Cache Stale",
+          "description": "Simulate RBAC permission cache invalidation failure",
+          "type": "degradation"
+        },
+        {
+          "id": "ml-scenario-3",
+          "label": "CDN Cache Purge",
+          "description": "Simulate CDN cache invalidation causing origin traffic spike",
+          "type": "load"
+        }
+      ]
+    },
+    {
+      "id": "telehealth-session",
+      "name": "Telehealth Session",
+      "description": "End-to-end telehealth session from appointment scheduling through video consultation and clinical documentation",
+      "steps": [
+        {
+          "id": "ts-step-1",
+          "name": "Appointment Scheduling",
+          "description": "Member schedules telehealth appointment via behavioral health platform",
+          "order": 1,
+          "application": "bh-care-platform",
+          "status": "degraded",
+          "latencyMs": 550
+        },
+        {
+          "id": "ts-step-2",
+          "name": "Eligibility Verification",
+          "description": "Verify member telehealth benefit eligibility",
+          "order": 2,
+          "application": "ep-eligibility-service",
+          "status": "healthy",
+          "latencyMs": 150
+        },
+        {
+          "id": "ts-step-3",
+          "name": "Session Initialization",
+          "description": "Initialize video session via telehealth integration service",
+          "order": 3,
+          "application": "bh-telehealth",
+          "status": "healthy",
+          "latencyMs": 290
+        },
+        {
+          "id": "ts-step-4",
+          "name": "Video Consultation",
+          "description": "Conduct live video consultation between member and provider",
+          "order": 4,
+          "application": "bh-telehealth",
+          "status": "healthy",
+          "latencyMs": 290
+        },
+        {
+          "id": "ts-step-5",
+          "name": "Clinical Documentation",
+          "description": "Provider documents clinical encounter in care platform",
+          "order": 5,
+          "application": "bh-care-platform",
+          "status": "degraded",
+          "latencyMs": 550
+        },
+        {
+          "id": "ts-step-6",
+          "name": "Claim Generation",
+          "description": "Auto-generate claim for telehealth encounter",
+          "order": 6,
+          "application": "cp-claims-intake",
+          "status": "degraded",
+          "latencyMs": 520
+        }
+      ],
+      "dependencies": [
+        "bh-care-platform",
+        "bh-telehealth",
+        "ep-eligibility-service",
+        "cp-claims-intake",
+        "ia-identity-provider",
+        "ag-api-gateway"
+      ],
+      "impactedApplications": [
+        "bh-care-platform",
+        "bh-telehealth",
+        "ep-eligibility-service",
+        "cp-claims-intake",
+        "ia-identity-provider",
+        "ag-api-gateway",
+        "mp-web-app"
+      ],
+      "healthStatus": {
+        "overall": "amber",
+        "availability": 99.71,
+        "errorRate": 0.19,
+        "p99LatencyMs": 2350,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "businessImpact": {
+        "score": 76,
+        "level": "high",
+        "revenueImpact": "medium",
+        "memberImpact": "critical",
+        "regulatoryRisk": "medium",
+        "description": "Growing strategic channel for behavioral health services. Session failures directly impact member care access and clinical outcomes. Regulatory requirements for telehealth availability."
+      },
+      "scenarioButtons": [
+        {
+          "id": "ts-scenario-1",
+          "label": "Video Service Degradation",
+          "description": "Simulate Twilio TURN server failover causing video quality issues",
+          "type": "degradation"
+        },
+        {
+          "id": "ts-scenario-2",
+          "label": "WebSocket Timeout",
+          "description": "Simulate load balancer WebSocket timeout misconfiguration",
+          "type": "failure"
+        },
+        {
+          "id": "ts-scenario-3",
+          "label": "Scheduling Timezone Bug",
+          "description": "Simulate timezone conversion error in appointment scheduling",
+          "type": "degradation"
+        }
+      ]
+    },
+    {
+      "id": "dental-benefits",
+      "name": "Dental Benefits",
+      "description": "Dental benefit claim submission and processing from provider encounter through adjudication and member notification",
+      "steps": [
+        {
+          "id": "db-step-1",
+          "name": "Claim Submission",
+          "description": "Dental provider submits claim via dental benefits platform",
+          "order": 1,
+          "application": "dv-dental-platform",
+          "status": "healthy",
+          "latencyMs": 390
+        },
+        {
+          "id": "db-step-2",
+          "name": "Eligibility Check",
+          "description": "Verify member dental benefit eligibility and remaining coverage",
+          "order": 2,
+          "application": "ep-eligibility-service",
+          "status": "healthy",
+          "latencyMs": 150
+        },
+        {
+          "id": "db-step-3",
+          "name": "Claims Adjudication",
+          "description": "Adjudicate dental claim through claims engine",
+          "order": 3,
+          "application": "cp-claims-engine",
+          "status": "critical",
+          "latencyMs": 1800
+        },
+        {
+          "id": "db-step-4",
+          "name": "EOB Generation",
+          "description": "Generate dental Explanation of Benefits",
+          "order": 4,
+          "application": "cp-eob-generator",
+          "status": "healthy",
+          "latencyMs": 3200
+        },
+        {
+          "id": "db-step-5",
+          "name": "Member Notification",
+          "description": "Notify member of dental claim processing via portal",
+          "order": 5,
+          "application": "mp-web-app",
+          "status": "healthy",
+          "latencyMs": 245
+        }
+      ],
+      "dependencies": [
+        "dv-dental-platform",
+        "ep-eligibility-service",
+        "cp-claims-engine",
+        "cp-eob-generator",
+        "mp-web-app",
+        "ag-api-gateway",
+        "ia-identity-provider"
+      ],
+      "impactedApplications": [
+        "dv-dental-platform",
+        "ep-eligibility-service",
+        "cp-claims-engine",
+        "cp-eob-generator",
+        "mp-web-app",
+        "ag-api-gateway",
+        "ia-identity-provider",
+        "bp-billing-engine"
+      ],
+      "healthStatus": {
+        "overall": "amber",
+        "availability": 99.91,
+        "errorRate": 0.05,
+        "p99LatencyMs": 5785,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "businessImpact": {
+        "score": 65,
+        "level": "high",
+        "revenueImpact": "medium",
+        "memberImpact": "medium",
+        "regulatoryRisk": "low",
+        "description": "Specialty benefit line with growing membership. Dental claim processing delays impact provider relationships and member satisfaction with ancillary benefits."
+      },
+      "scenarioButtons": [
+        {
+          "id": "db-scenario-1",
+          "label": "Claims Engine Dependency Failure",
+          "description": "Simulate claims adjudication engine unavailable for dental claims",
+          "type": "failure"
+        },
+        {
+          "id": "db-scenario-2",
+          "label": "Form Rendering Issue",
+          "description": "Simulate CSS rendering issue on dental claim forms",
+          "type": "degradation"
+        },
+        {
+          "id": "db-scenario-3",
+          "label": "Year-End Benefit Reset",
+          "description": "Simulate high volume during annual benefit maximum reset",
+          "type": "load"
+        }
+      ]
+    },
+    {
+      "id": "edi-transaction-processing",
+      "name": "EDI Transaction Processing",
+      "description": "Electronic data interchange processing for healthcare transactions including 837 claims, 835 remittances, and 270/271 eligibility",
+      "steps": [
+        {
+          "id": "edi-step-1",
+          "name": "File Receipt",
+          "description": "Receive EDI transaction files from trading partners",
+          "order": 1,
+          "application": "edi-transaction-hub",
+          "status": "degraded",
+          "latencyMs": 850
+        },
+        {
+          "id": "edi-step-2",
+          "name": "File Parsing",
+          "description": "Parse and validate EDI file format and segments",
+          "order": 2,
+          "application": "edi-transaction-hub",
+          "status": "degraded",
+          "latencyMs": 850
+        },
+        {
+          "id": "edi-step-3",
+          "name": "Event Streaming",
+          "description": "Stream parsed transactions to downstream systems via Kafka",
+          "order": 3,
+          "application": "es-kafka-platform",
+          "status": "healthy",
+          "latencyMs": 12
+        },
+        {
+          "id": "edi-step-4",
+          "name": "Claims Routing",
+          "description": "Route 837 claims to claims intake service",
+          "order": 4,
+          "application": "cp-claims-intake",
+          "status": "degraded",
+          "latencyMs": 520
+        },
+        {
+          "id": "edi-step-5",
+          "name": "Remittance Processing",
+          "description": "Process 835 remittance advice for payment reconciliation",
+          "order": 5,
+          "application": "bp-billing-engine",
+          "status": "healthy",
+          "latencyMs": 120
+        },
+        {
+          "id": "edi-step-6",
+          "name": "Acknowledgment Generation",
+          "description": "Generate 999 functional acknowledgment for trading partner",
+          "order": 6,
+          "application": "edi-transaction-hub",
+          "status": "degraded",
+          "latencyMs": 850
+        }
+      ],
+      "dependencies": [
+        "edi-transaction-hub",
+        "es-kafka-platform",
+        "cp-claims-intake",
+        "bp-billing-engine",
+        "ag-api-gateway"
+      ],
+      "impactedApplications": [
+        "edi-transaction-hub",
+        "es-kafka-platform",
+        "cp-claims-intake",
+        "cp-claims-engine",
+        "bp-billing-engine",
+        "ag-api-gateway",
+        "dp-data-lake"
+      ],
+      "healthStatus": {
+        "overall": "amber",
+        "availability": 99.71,
+        "errorRate": 0.22,
+        "p99LatencyMs": 3202,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "businessImpact": {
+        "score": 90,
+        "level": "critical",
+        "revenueImpact": "high",
+        "memberImpact": "medium",
+        "regulatoryRisk": "critical",
+        "description": "HIPAA-mandated electronic transaction processing. EDI failures impact claims intake from all trading partners and can result in regulatory penalties for transaction processing delays."
+      },
+      "scenarioButtons": [
+        {
+          "id": "edi-scenario-1",
+          "label": "MQ Channel Failure",
+          "description": "Simulate MQ channel failure between EDI hub and claims engine",
+          "type": "failure"
+        },
+        {
+          "id": "edi-scenario-2",
+          "label": "Schema Version Mismatch",
+          "description": "Simulate 835 file schema version mismatch with CMS specs",
+          "type": "degradation"
+        },
+        {
+          "id": "edi-scenario-3",
+          "label": "Large Batch File Processing",
+          "description": "Simulate processing of 500K+ transaction batch file",
+          "type": "load"
+        }
+      ]
+    },
+    {
+      "id": "executive-reporting",
+      "name": "Executive Reporting",
+      "description": "End-to-end data pipeline from source systems through data lake to executive dashboards and analytics",
+      "steps": [
+        {
+          "id": "er-step-1",
+          "name": "Data Extraction",
+          "description": "Extract data from source systems via ETL orchestrator",
+          "order": 1,
+          "application": "dp-etl-orchestrator",
+          "status": "healthy",
+          "latencyMs": 1500
+        },
+        {
+          "id": "er-step-2",
+          "name": "Data Lake Ingestion",
+          "description": "Ingest and transform data in enterprise data lake",
+          "order": 2,
+          "application": "dp-data-lake",
+          "status": "healthy",
+          "latencyMs": 2100
+        },
+        {
+          "id": "er-step-3",
+          "name": "Analytics Processing",
+          "description": "Process analytics queries and aggregations in analytics hub",
+          "order": 3,
+          "application": "bi-analytics-hub",
+          "status": "healthy",
+          "latencyMs": 1200
+        },
+        {
+          "id": "er-step-4",
+          "name": "Dashboard Rendering",
+          "description": "Render executive dashboard with KPIs and visualizations",
+          "order": 4,
+          "application": "bi-executive-dashboard",
+          "status": "healthy",
+          "latencyMs": 900
+        },
+        {
+          "id": "er-step-5",
+          "name": "Authentication",
+          "description": "Authenticate executive user access to dashboards",
+          "order": 5,
+          "application": "ia-identity-provider",
+          "status": "healthy",
+          "latencyMs": 55
+        }
+      ],
+      "dependencies": [
+        "dp-etl-orchestrator",
+        "dp-data-lake",
+        "bi-analytics-hub",
+        "bi-executive-dashboard",
+        "ia-identity-provider"
+      ],
+      "impactedApplications": [
+        "dp-etl-orchestrator",
+        "dp-data-lake",
+        "bi-analytics-hub",
+        "bi-executive-dashboard",
+        "ia-identity-provider",
+        "obs-monitoring-stack"
+      ],
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.76,
+        "errorRate": 0.08,
+        "p99LatencyMs": 5755,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "businessImpact": {
+        "score": 55,
+        "level": "medium",
+        "revenueImpact": "low",
+        "memberImpact": "low",
+        "regulatoryRisk": "medium",
+        "description": "Supports executive decision-making and board reporting. Data pipeline failures delay strategic insights and can impact regulatory reporting deadlines."
+      },
+      "scenarioButtons": [
+        {
+          "id": "er-scenario-1",
+          "label": "Snowflake Cold Start",
+          "description": "Simulate Snowflake warehouse auto-suspend causing cold start delays",
+          "type": "degradation"
+        },
+        {
+          "id": "er-scenario-2",
+          "label": "ETL Pipeline Failure",
+          "description": "Simulate Airflow DAG failure for claims data pipeline",
+          "type": "failure"
+        },
+        {
+          "id": "er-scenario-3",
+          "label": "Schema Drift",
+          "description": "Simulate source data schema drift breaking Delta Lake merge",
+          "type": "degradation"
+        }
+      ]
+    },
+    {
+      "id": "infrastructure-deployment",
+      "name": "Infrastructure Deployment",
+      "description": "Application deployment pipeline from code commit through CI/CD to production deployment on Kubernetes",
+      "steps": [
+        {
+          "id": "id-step-1",
+          "name": "Code Commit",
+          "description": "Developer pushes code to GitHub repository",
+          "order": 1,
+          "application": "k8s-platform",
+          "status": "healthy",
+          "latencyMs": 15
+        },
+        {
+          "id": "id-step-2",
+          "name": "CI Pipeline",
+          "description": "Run build, test, and security scan in CI pipeline",
+          "order": 2,
+          "application": "k8s-platform",
+          "status": "healthy",
+          "latencyMs": 15
+        },
+        {
+          "id": "id-step-3",
+          "name": "Service Mesh Configuration",
+          "description": "Configure Istio sidecar injection and traffic policies",
+          "order": 3,
+          "application": "k8s-service-mesh",
+          "status": "healthy",
+          "latencyMs": 8
+        },
+        {
+          "id": "id-step-4",
+          "name": "Deployment Rollout",
+          "description": "Deploy to Kubernetes via ArgoCD with canary strategy",
+          "order": 4,
+          "application": "k8s-platform",
+          "status": "healthy",
+          "latencyMs": 15
+        },
+        {
+          "id": "id-step-5",
+          "name": "Health Monitoring",
+          "description": "Monitor deployment health via observability stack",
+          "order": 5,
+          "application": "obs-monitoring-stack",
+          "status": "healthy",
+          "latencyMs": 85
+        },
+        {
+          "id": "id-step-6",
+          "name": "Log Verification",
+          "description": "Verify deployment logs and error rates in log aggregator",
+          "order": 6,
+          "application": "obs-log-aggregator",
+          "status": "healthy",
+          "latencyMs": 120
+        }
+      ],
+      "dependencies": [
+        "k8s-platform",
+        "k8s-service-mesh",
+        "obs-monitoring-stack",
+        "obs-log-aggregator"
+      ],
+      "impactedApplications": [
+        "k8s-platform",
+        "k8s-service-mesh",
+        "obs-monitoring-stack",
+        "obs-log-aggregator",
+        "ia-rbac-service"
+      ],
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.99,
+        "errorRate": 0.001,
+        "p99LatencyMs": 258,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "businessImpact": {
+        "score": 82,
+        "level": "high",
+        "revenueImpact": "medium",
+        "memberImpact": "low",
+        "regulatoryRisk": "low",
+        "description": "Foundation for all application deployments. Platform failures block all release pipelines and can delay critical security patches and feature releases."
+      },
+      "scenarioButtons": [
+        {
+          "id": "id-scenario-1",
+          "label": "Node Failure",
+          "description": "Simulate EC2 instance hardware failure in availability zone",
+          "type": "infrastructure"
+        },
+        {
+          "id": "id-scenario-2",
+          "label": "Sidecar Injection Failure",
+          "description": "Simulate Istio sidecar injection webhook misconfiguration",
+          "type": "failure"
+        },
+        {
+          "id": "id-scenario-3",
+          "label": "Monitoring Agent Mismatch",
+          "description": "Simulate Datadog agent version mismatch after cluster upgrade",
+          "type": "degradation"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "generatedAt": "2024-11-14T12:00:00Z",
+    "totalJourneys": 13,
+    "healthSummary": {
+      "green": 4,
+      "amber": 7,
+      "red": 1,
+      "unknown": 0
+    },
+    "businessImpactSummary": {
+      "critical": 6,
+      "high": 5,
+      "medium": 1,
+      "low": 0
+    },
+    "averageBusinessImpactScore": 81.8,
+    "totalSteps": 73,
+    "totalUniqueApplications": 35,
+    "scenarioTypes": {
+      "failure": 14,
+      "degradation": 13,
+      "load": 9,
+      "infrastructure": 2
+    }
+  }
+}

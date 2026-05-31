@@ -1,0 +1,1420 @@
+{
+  "domains": [
+    {
+      "id": "market-facing",
+      "label": "Market Facing",
+      "description": "Consumer and provider-facing digital experiences",
+      "icon": "Globe",
+      "ragStatus": "green",
+      "portfolios": [
+        {
+          "id": "member-portal",
+          "label": "Member Portal",
+          "domainId": "market-facing",
+          "description": "Self-service member portal and mobile applications",
+          "ragStatus": "green",
+          "applications": [
+            {
+              "id": "mp-web-app",
+              "name": "Member Portal Web",
+              "portfolioId": "member-portal",
+              "domainId": "market-facing",
+              "criticality": "critical",
+              "ragStatus": "green",
+              "owner": "Jessica Martinez",
+              "teamSlack": "#team-member-portal",
+              "environment": "production",
+              "environments": ["production", "staging", "qa", "development"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["React", "Node.js", "PostgreSQL", "Redis"],
+              "deploymentFrequency": "daily",
+              "lastDeployment": "2024-11-14T09:23:00Z",
+              "sloTarget": 99.95,
+              "sloCurrent": 99.97
+            },
+            {
+              "id": "mp-mobile-ios",
+              "name": "Member Portal iOS",
+              "portfolioId": "member-portal",
+              "domainId": "market-facing",
+              "criticality": "critical",
+              "ragStatus": "green",
+              "owner": "Jessica Martinez",
+              "teamSlack": "#team-member-mobile",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "App Store Connect",
+                "containerPlatform": "N/A",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Swift", "SwiftUI", "GraphQL"],
+              "deploymentFrequency": "biweekly",
+              "lastDeployment": "2024-11-10T14:00:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.92
+            },
+            {
+              "id": "mp-mobile-android",
+              "name": "Member Portal Android",
+              "portfolioId": "member-portal",
+              "domainId": "market-facing",
+              "criticality": "critical",
+              "ragStatus": "amber",
+              "owner": "Jessica Martinez",
+              "teamSlack": "#team-member-mobile",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "Google Play Console",
+                "containerPlatform": "N/A",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Kotlin", "Jetpack Compose", "GraphQL"],
+              "deploymentFrequency": "biweekly",
+              "lastDeployment": "2024-11-08T11:30:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.78
+            },
+            {
+              "id": "mp-bff",
+              "name": "Member Portal BFF",
+              "portfolioId": "member-portal",
+              "domainId": "market-facing",
+              "criticality": "high",
+              "ragStatus": "green",
+              "owner": "David Chen",
+              "teamSlack": "#team-member-portal",
+              "environment": "production",
+              "environments": ["production", "staging", "qa", "development"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Node.js", "Express", "GraphQL", "Redis"],
+              "deploymentFrequency": "daily",
+              "lastDeployment": "2024-11-14T08:45:00Z",
+              "sloTarget": 99.95,
+              "sloCurrent": 99.96
+            }
+          ]
+        },
+        {
+          "id": "corporate-websites",
+          "label": "Corporate Websites",
+          "domainId": "market-facing",
+          "description": "Public-facing corporate and marketing websites",
+          "ragStatus": "green",
+          "applications": [
+            {
+              "id": "cw-main-site",
+              "name": "Corporate Main Website",
+              "portfolioId": "corporate-websites",
+              "domainId": "market-facing",
+              "criticality": "high",
+              "ragStatus": "green",
+              "owner": "Sarah Thompson",
+              "teamSlack": "#team-corp-web",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Next.js", "React", "Contentful CMS", "PostgreSQL"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-12T16:00:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.95
+            },
+            {
+              "id": "cw-provider-directory",
+              "name": "Provider Directory",
+              "portfolioId": "corporate-websites",
+              "domainId": "market-facing",
+              "criticality": "high",
+              "ragStatus": "green",
+              "owner": "Sarah Thompson",
+              "teamSlack": "#team-corp-web",
+              "environment": "production",
+              "environments": ["production", "staging", "qa", "development"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["React", "Elasticsearch", "Node.js", "PostgreSQL"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-11T10:30:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.91
+            }
+          ]
+        },
+        {
+          "id": "care-radius",
+          "label": "Care Radius",
+          "domainId": "market-facing",
+          "description": "Provider network and care coordination platform",
+          "ragStatus": "amber",
+          "applications": [
+            {
+              "id": "cr-provider-portal",
+              "name": "Care Radius Provider Portal",
+              "portfolioId": "care-radius",
+              "domainId": "market-facing",
+              "criticality": "critical",
+              "ragStatus": "amber",
+              "owner": "Michael Rivera",
+              "teamSlack": "#team-care-radius",
+              "environment": "production",
+              "environments": ["production", "staging", "qa", "development"],
+              "toolchain": {
+                "cicd": "Jenkins",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Angular", "Java", "Spring Boot", "Oracle DB"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-13T07:15:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.72
+            },
+            {
+              "id": "cr-referral-engine",
+              "name": "Referral Management Engine",
+              "portfolioId": "care-radius",
+              "domainId": "market-facing",
+              "criticality": "high",
+              "ragStatus": "amber",
+              "owner": "Michael Rivera",
+              "teamSlack": "#team-care-radius",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "Jenkins",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Java", "Spring Boot", "Kafka", "PostgreSQL"],
+              "deploymentFrequency": "biweekly",
+              "lastDeployment": "2024-11-07T13:00:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.65
+            },
+            {
+              "id": "cr-network-api",
+              "name": "Network Adequacy API",
+              "portfolioId": "care-radius",
+              "domainId": "market-facing",
+              "criticality": "high",
+              "ragStatus": "green",
+              "owner": "Michael Rivera",
+              "teamSlack": "#team-care-radius",
+              "environment": "production",
+              "environments": ["production", "staging", "qa", "development"],
+              "toolchain": {
+                "cicd": "Jenkins",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Python", "FastAPI", "PostgreSQL", "Redis"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-12T09:00:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.93
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "enrollment-billing",
+      "label": "Enrollment & Billing",
+      "description": "Member enrollment, eligibility, and billing operations",
+      "icon": "CreditCard",
+      "ragStatus": "amber",
+      "portfolios": [
+        {
+          "id": "enrollment-platform",
+          "label": "Enrollment Platform",
+          "domainId": "enrollment-billing",
+          "description": "Member enrollment and eligibility management",
+          "ragStatus": "amber",
+          "applications": [
+            {
+              "id": "ep-enrollment-engine",
+              "name": "Enrollment Engine",
+              "portfolioId": "enrollment-platform",
+              "domainId": "enrollment-billing",
+              "criticality": "critical",
+              "ragStatus": "amber",
+              "owner": "Karen Liu",
+              "teamSlack": "#team-enrollment",
+              "environment": "production",
+              "environments": ["production", "staging", "qa", "development"],
+              "toolchain": {
+                "cicd": "Jenkins",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Java", "Spring Boot", "Oracle DB", "Kafka"],
+              "deploymentFrequency": "biweekly",
+              "lastDeployment": "2024-11-06T20:00:00Z",
+              "sloTarget": 99.95,
+              "sloCurrent": 99.82
+            },
+            {
+              "id": "ep-eligibility-service",
+              "name": "Eligibility Verification Service",
+              "portfolioId": "enrollment-platform",
+              "domainId": "enrollment-billing",
+              "criticality": "critical",
+              "ragStatus": "green",
+              "owner": "Karen Liu",
+              "teamSlack": "#team-enrollment",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "Jenkins",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Java", "Spring Boot", "Oracle DB", "Redis"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-11T18:30:00Z",
+              "sloTarget": 99.95,
+              "sloCurrent": 99.96
+            },
+            {
+              "id": "ep-member-onboarding",
+              "name": "Member Onboarding UI",
+              "portfolioId": "enrollment-platform",
+              "domainId": "enrollment-billing",
+              "criticality": "high",
+              "ragStatus": "amber",
+              "owner": "Karen Liu",
+              "teamSlack": "#team-enrollment",
+              "environment": "production",
+              "environments": ["production", "staging", "qa", "development"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["React", "TypeScript", "Node.js", "PostgreSQL"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-13T14:00:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.75
+            }
+          ]
+        },
+        {
+          "id": "billing-payments",
+          "label": "Billing & Payments",
+          "domainId": "enrollment-billing",
+          "description": "Premium billing, payment processing, and accounts receivable",
+          "ragStatus": "green",
+          "applications": [
+            {
+              "id": "bp-billing-engine",
+              "name": "Billing Engine",
+              "portfolioId": "billing-payments",
+              "domainId": "enrollment-billing",
+              "criticality": "critical",
+              "ragStatus": "green",
+              "owner": "Robert Kim",
+              "teamSlack": "#team-billing",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "Jenkins",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Java", "Spring Boot", "Oracle DB", "Kafka"],
+              "deploymentFrequency": "biweekly",
+              "lastDeployment": "2024-11-05T22:00:00Z",
+              "sloTarget": 99.99,
+              "sloCurrent": 99.99
+            },
+            {
+              "id": "bp-payment-gateway",
+              "name": "Payment Gateway",
+              "portfolioId": "billing-payments",
+              "domainId": "enrollment-billing",
+              "criticality": "critical",
+              "ragStatus": "green",
+              "owner": "Robert Kim",
+              "teamSlack": "#team-billing",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "Jenkins",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Java", "Spring Boot", "PostgreSQL", "Stripe SDK"],
+              "deploymentFrequency": "monthly",
+              "lastDeployment": "2024-10-28T21:00:00Z",
+              "sloTarget": 99.99,
+              "sloCurrent": 100.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "horizontal-functions-integrations",
+      "label": "Horizontal Functions – Integrations",
+      "description": "Enterprise integration services, APIs, and middleware",
+      "icon": "Workflow",
+      "ragStatus": "green",
+      "portfolios": [
+        {
+          "id": "api-gateway",
+          "label": "API Gateway & Management",
+          "domainId": "horizontal-functions-integrations",
+          "description": "Centralized API gateway, rate limiting, and API lifecycle management",
+          "ragStatus": "green",
+          "applications": [
+            {
+              "id": "ag-api-gateway",
+              "name": "Enterprise API Gateway",
+              "portfolioId": "api-gateway",
+              "domainId": "horizontal-functions-integrations",
+              "criticality": "critical",
+              "ragStatus": "green",
+              "owner": "Alex Patel",
+              "teamSlack": "#team-integration",
+              "environment": "production",
+              "environments": ["production", "staging", "qa", "development"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Kong", "Lua", "PostgreSQL", "Redis"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-12T05:00:00Z",
+              "sloTarget": 99.99,
+              "sloCurrent": 99.99
+            },
+            {
+              "id": "ag-developer-portal",
+              "name": "API Developer Portal",
+              "portfolioId": "api-gateway",
+              "domainId": "horizontal-functions-integrations",
+              "criticality": "medium",
+              "ragStatus": "green",
+              "owner": "Alex Patel",
+              "teamSlack": "#team-integration",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["React", "Node.js", "PostgreSQL"],
+              "deploymentFrequency": "biweekly",
+              "lastDeployment": "2024-11-09T12:00:00Z",
+              "sloTarget": 99.5,
+              "sloCurrent": 99.88
+            }
+          ]
+        },
+        {
+          "id": "event-streaming",
+          "label": "Event Streaming",
+          "domainId": "horizontal-functions-integrations",
+          "description": "Enterprise event bus and streaming infrastructure",
+          "ragStatus": "green",
+          "applications": [
+            {
+              "id": "es-kafka-platform",
+              "name": "Kafka Streaming Platform",
+              "portfolioId": "event-streaming",
+              "domainId": "horizontal-functions-integrations",
+              "criticality": "critical",
+              "ragStatus": "green",
+              "owner": "Alex Patel",
+              "teamSlack": "#team-streaming",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Apache Kafka", "Kafka Connect", "Schema Registry", "Java"],
+              "deploymentFrequency": "monthly",
+              "lastDeployment": "2024-10-30T03:00:00Z",
+              "sloTarget": 99.99,
+              "sloCurrent": 99.995
+            },
+            {
+              "id": "es-event-router",
+              "name": "Event Router Service",
+              "portfolioId": "event-streaming",
+              "domainId": "horizontal-functions-integrations",
+              "criticality": "high",
+              "ragStatus": "green",
+              "owner": "Alex Patel",
+              "teamSlack": "#team-streaming",
+              "environment": "production",
+              "environments": ["production", "staging", "qa", "development"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Go", "Kafka", "Redis", "PostgreSQL"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-13T06:00:00Z",
+              "sloTarget": 99.95,
+              "sloCurrent": 99.97
+            }
+          ]
+        },
+        {
+          "id": "edi-processing",
+          "label": "EDI Processing",
+          "domainId": "horizontal-functions-integrations",
+          "description": "Electronic data interchange for healthcare transactions",
+          "ragStatus": "amber",
+          "applications": [
+            {
+              "id": "edi-transaction-hub",
+              "name": "EDI Transaction Hub",
+              "portfolioId": "edi-processing",
+              "domainId": "horizontal-functions-integrations",
+              "criticality": "critical",
+              "ragStatus": "amber",
+              "owner": "Linda Nguyen",
+              "teamSlack": "#team-edi",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "Jenkins",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Java", "Spring Batch", "Oracle DB", "MQ"],
+              "deploymentFrequency": "monthly",
+              "lastDeployment": "2024-10-25T02:00:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.71
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data-analytics",
+      "label": "Data & Analytics",
+      "description": "Enterprise data platform, analytics, and business intelligence",
+      "icon": "BarChart3",
+      "ragStatus": "green",
+      "portfolios": [
+        {
+          "id": "data-platform",
+          "label": "Data Platform",
+          "domainId": "data-analytics",
+          "description": "Enterprise data lake, warehousing, and ETL pipelines",
+          "ragStatus": "green",
+          "applications": [
+            {
+              "id": "dp-data-lake",
+              "name": "Enterprise Data Lake",
+              "portfolioId": "data-platform",
+              "domainId": "data-analytics",
+              "criticality": "critical",
+              "ragStatus": "green",
+              "owner": "Priya Sharma",
+              "teamSlack": "#team-data-platform",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Spark", "Delta Lake", "Python", "AWS S3", "Airflow"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-11T04:00:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.94
+            },
+            {
+              "id": "dp-etl-orchestrator",
+              "name": "ETL Orchestrator",
+              "portfolioId": "data-platform",
+              "domainId": "data-analytics",
+              "criticality": "high",
+              "ragStatus": "green",
+              "owner": "Priya Sharma",
+              "teamSlack": "#team-data-platform",
+              "environment": "production",
+              "environments": ["production", "staging", "qa", "development"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Apache Airflow", "Python", "PostgreSQL", "AWS Glue"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-12T06:30:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.91
+            }
+          ]
+        },
+        {
+          "id": "bi-reporting",
+          "label": "BI & Reporting",
+          "domainId": "data-analytics",
+          "description": "Business intelligence dashboards and reporting tools",
+          "ragStatus": "green",
+          "applications": [
+            {
+              "id": "bi-analytics-hub",
+              "name": "Analytics Hub",
+              "portfolioId": "bi-reporting",
+              "domainId": "data-analytics",
+              "criticality": "high",
+              "ragStatus": "green",
+              "owner": "Priya Sharma",
+              "teamSlack": "#team-analytics",
+              "environment": "production",
+              "environments": ["production", "staging"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Tableau", "Snowflake", "Python", "dbt"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-13T08:00:00Z",
+              "sloTarget": 99.5,
+              "sloCurrent": 99.82
+            },
+            {
+              "id": "bi-executive-dashboard",
+              "name": "Executive Dashboard",
+              "portfolioId": "bi-reporting",
+              "domainId": "data-analytics",
+              "criticality": "medium",
+              "ragStatus": "green",
+              "owner": "Priya Sharma",
+              "teamSlack": "#team-analytics",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["React", "D3.js", "Node.js", "Snowflake"],
+              "deploymentFrequency": "biweekly",
+              "lastDeployment": "2024-11-08T15:00:00Z",
+              "sloTarget": 99.5,
+              "sloCurrent": 99.76
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "service-core-admin",
+      "label": "Service & Core Admin",
+      "description": "Claims processing, utilization management, and core administration",
+      "icon": "FileText",
+      "ragStatus": "red",
+      "portfolios": [
+        {
+          "id": "claims-processing",
+          "label": "Claims Processing",
+          "domainId": "service-core-admin",
+          "description": "End-to-end claims adjudication and processing",
+          "ragStatus": "red",
+          "applications": [
+            {
+              "id": "cp-claims-engine",
+              "name": "Claims Adjudication Engine",
+              "portfolioId": "claims-processing",
+              "domainId": "service-core-admin",
+              "criticality": "critical",
+              "ragStatus": "red",
+              "owner": "Thomas Wright",
+              "teamSlack": "#team-claims",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "Jenkins",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Java", "Spring Boot", "Oracle DB", "Kafka", "Drools"],
+              "deploymentFrequency": "monthly",
+              "lastDeployment": "2024-10-29T01:00:00Z",
+              "sloTarget": 99.99,
+              "sloCurrent": 99.45
+            },
+            {
+              "id": "cp-claims-intake",
+              "name": "Claims Intake Service",
+              "portfolioId": "claims-processing",
+              "domainId": "service-core-admin",
+              "criticality": "critical",
+              "ragStatus": "amber",
+              "owner": "Thomas Wright",
+              "teamSlack": "#team-claims",
+              "environment": "production",
+              "environments": ["production", "staging", "qa", "development"],
+              "toolchain": {
+                "cicd": "Jenkins",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Java", "Spring Boot", "Kafka", "PostgreSQL"],
+              "deploymentFrequency": "biweekly",
+              "lastDeployment": "2024-11-04T23:00:00Z",
+              "sloTarget": 99.95,
+              "sloCurrent": 99.81
+            },
+            {
+              "id": "cp-eob-generator",
+              "name": "EOB Generator",
+              "portfolioId": "claims-processing",
+              "domainId": "service-core-admin",
+              "criticality": "high",
+              "ragStatus": "green",
+              "owner": "Thomas Wright",
+              "teamSlack": "#team-claims",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "Jenkins",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Java", "Spring Batch", "Oracle DB", "AWS S3"],
+              "deploymentFrequency": "monthly",
+              "lastDeployment": "2024-10-22T02:00:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.92
+            }
+          ]
+        },
+        {
+          "id": "utilization-management",
+          "label": "Utilization Management",
+          "domainId": "service-core-admin",
+          "description": "Prior authorization and utilization review",
+          "ragStatus": "amber",
+          "applications": [
+            {
+              "id": "um-prior-auth",
+              "name": "Prior Authorization System",
+              "portfolioId": "utilization-management",
+              "domainId": "service-core-admin",
+              "criticality": "critical",
+              "ragStatus": "amber",
+              "owner": "Angela Foster",
+              "teamSlack": "#team-um",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "Jenkins",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Java", "Spring Boot", "Oracle DB", "Redis"],
+              "deploymentFrequency": "biweekly",
+              "lastDeployment": "2024-11-04T20:00:00Z",
+              "sloTarget": 99.95,
+              "sloCurrent": 99.78
+            },
+            {
+              "id": "um-review-portal",
+              "name": "UM Review Portal",
+              "portfolioId": "utilization-management",
+              "domainId": "service-core-admin",
+              "criticality": "high",
+              "ragStatus": "green",
+              "owner": "Angela Foster",
+              "teamSlack": "#team-um",
+              "environment": "production",
+              "environments": ["production", "staging", "qa", "development"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["React", "Node.js", "PostgreSQL"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-12T14:30:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.91
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "corporate-functions",
+      "label": "Corporate Functions",
+      "description": "HR, finance, legal, and corporate support systems",
+      "icon": "Building",
+      "ragStatus": "green",
+      "portfolios": [
+        {
+          "id": "hr-systems",
+          "label": "HR Systems",
+          "domainId": "corporate-functions",
+          "description": "Human resources, payroll, and talent management",
+          "ragStatus": "green",
+          "applications": [
+            {
+              "id": "hr-workday",
+              "name": "Workday HCM",
+              "portfolioId": "hr-systems",
+              "domainId": "corporate-functions",
+              "criticality": "high",
+              "ragStatus": "green",
+              "owner": "Patricia Adams",
+              "teamSlack": "#team-hr-tech",
+              "environment": "production",
+              "environments": ["production", "sandbox"],
+              "toolchain": {
+                "cicd": "Workday Deploy",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "N/A",
+                "containerPlatform": "SaaS",
+                "cloudProvider": "Workday Cloud"
+              },
+              "techStack": ["Workday", "Workday Studio", "EIB"],
+              "deploymentFrequency": "monthly",
+              "lastDeployment": "2024-11-01T06:00:00Z",
+              "sloTarget": 99.5,
+              "sloCurrent": 99.85
+            },
+            {
+              "id": "hr-learning-platform",
+              "name": "Learning Management System",
+              "portfolioId": "hr-systems",
+              "domainId": "corporate-functions",
+              "criticality": "medium",
+              "ragStatus": "green",
+              "owner": "Patricia Adams",
+              "teamSlack": "#team-hr-tech",
+              "environment": "production",
+              "environments": ["production", "staging"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["React", "Node.js", "PostgreSQL", "AWS S3"],
+              "deploymentFrequency": "biweekly",
+              "lastDeployment": "2024-11-07T10:00:00Z",
+              "sloTarget": 99.0,
+              "sloCurrent": 99.65
+            }
+          ]
+        },
+        {
+          "id": "finance-systems",
+          "label": "Finance Systems",
+          "domainId": "corporate-functions",
+          "description": "Financial planning, accounting, and procurement",
+          "ragStatus": "green",
+          "applications": [
+            {
+              "id": "fin-erp",
+              "name": "SAP ERP",
+              "portfolioId": "finance-systems",
+              "domainId": "corporate-functions",
+              "criticality": "critical",
+              "ragStatus": "green",
+              "owner": "James O'Brien",
+              "teamSlack": "#team-finance-tech",
+              "environment": "production",
+              "environments": ["production", "qa", "sandbox"],
+              "toolchain": {
+                "cicd": "SAP Transport",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "N/A",
+                "containerPlatform": "On-Premise",
+                "cloudProvider": "Hybrid"
+              },
+              "techStack": ["SAP S/4HANA", "ABAP", "SAP HANA DB"],
+              "deploymentFrequency": "monthly",
+              "lastDeployment": "2024-10-27T04:00:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.93
+            },
+            {
+              "id": "fin-procurement",
+              "name": "Procurement Portal",
+              "portfolioId": "finance-systems",
+              "domainId": "corporate-functions",
+              "criticality": "medium",
+              "ragStatus": "green",
+              "owner": "James O'Brien",
+              "teamSlack": "#team-finance-tech",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["React", "Python", "Django", "PostgreSQL"],
+              "deploymentFrequency": "biweekly",
+              "lastDeployment": "2024-11-06T12:00:00Z",
+              "sloTarget": 99.5,
+              "sloCurrent": 99.72
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shared-platforms",
+      "label": "Shared Platforms",
+      "description": "Cross-cutting platform services, identity, and infrastructure",
+      "icon": "Layers",
+      "ragStatus": "green",
+      "portfolios": [
+        {
+          "id": "identity-access",
+          "label": "Identity & Access",
+          "domainId": "shared-platforms",
+          "description": "Authentication, authorization, and identity management",
+          "ragStatus": "green",
+          "applications": [
+            {
+              "id": "ia-identity-provider",
+              "name": "Enterprise Identity Provider",
+              "portfolioId": "identity-access",
+              "domainId": "shared-platforms",
+              "criticality": "critical",
+              "ragStatus": "green",
+              "owner": "Chris Donovan",
+              "teamSlack": "#team-identity",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Okta", "Node.js", "PostgreSQL", "Redis"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-13T04:00:00Z",
+              "sloTarget": 99.99,
+              "sloCurrent": 99.995
+            },
+            {
+              "id": "ia-rbac-service",
+              "name": "RBAC Authorization Service",
+              "portfolioId": "identity-access",
+              "domainId": "shared-platforms",
+              "criticality": "critical",
+              "ragStatus": "green",
+              "owner": "Chris Donovan",
+              "teamSlack": "#team-identity",
+              "environment": "production",
+              "environments": ["production", "staging", "qa", "development"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Go", "PostgreSQL", "Redis", "gRPC"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-12T03:30:00Z",
+              "sloTarget": 99.99,
+              "sloCurrent": 99.99
+            }
+          ]
+        },
+        {
+          "id": "observability-platform",
+          "label": "Observability Platform",
+          "domainId": "shared-platforms",
+          "description": "Centralized monitoring, logging, and tracing infrastructure",
+          "ragStatus": "green",
+          "applications": [
+            {
+              "id": "obs-monitoring-stack",
+              "name": "Monitoring Stack",
+              "portfolioId": "observability-platform",
+              "domainId": "shared-platforms",
+              "criticality": "critical",
+              "ragStatus": "green",
+              "owner": "Raj Mehta",
+              "teamSlack": "#team-observability",
+              "environment": "production",
+              "environments": ["production", "staging"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Datadog", "Prometheus", "Grafana", "OpenTelemetry"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-11T05:00:00Z",
+              "sloTarget": 99.95,
+              "sloCurrent": 99.98
+            },
+            {
+              "id": "obs-log-aggregator",
+              "name": "Log Aggregation Service",
+              "portfolioId": "observability-platform",
+              "domainId": "shared-platforms",
+              "criticality": "high",
+              "ragStatus": "green",
+              "owner": "Raj Mehta",
+              "teamSlack": "#team-observability",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Splunk", "Fluentd", "Elasticsearch", "Kubernetes"],
+              "deploymentFrequency": "biweekly",
+              "lastDeployment": "2024-11-08T04:00:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.94
+            }
+          ]
+        },
+        {
+          "id": "container-platform",
+          "label": "Container Platform",
+          "domainId": "shared-platforms",
+          "description": "Kubernetes clusters and container orchestration",
+          "ragStatus": "green",
+          "applications": [
+            {
+              "id": "k8s-platform",
+              "name": "Kubernetes Platform",
+              "portfolioId": "container-platform",
+              "domainId": "shared-platforms",
+              "criticality": "critical",
+              "ragStatus": "green",
+              "owner": "Raj Mehta",
+              "teamSlack": "#team-platform",
+              "environment": "production",
+              "environments": ["production", "staging", "qa", "development"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "EKS",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Kubernetes", "Helm", "ArgoCD", "Terraform"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-13T02:00:00Z",
+              "sloTarget": 99.99,
+              "sloCurrent": 99.99
+            },
+            {
+              "id": "k8s-service-mesh",
+              "name": "Service Mesh (Istio)",
+              "portfolioId": "container-platform",
+              "domainId": "shared-platforms",
+              "criticality": "high",
+              "ragStatus": "green",
+              "owner": "Raj Mehta",
+              "teamSlack": "#team-platform",
+              "environment": "production",
+              "environments": ["production", "staging"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "EKS",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Istio", "Envoy", "Kubernetes", "Kiali"],
+              "deploymentFrequency": "monthly",
+              "lastDeployment": "2024-10-31T03:00:00Z",
+              "sloTarget": 99.95,
+              "sloCurrent": 99.97
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "specialty",
+      "label": "Specialty",
+      "description": "Specialty benefits including pharmacy, dental, vision, and behavioral health",
+      "icon": "Heart",
+      "ragStatus": "amber",
+      "portfolios": [
+        {
+          "id": "pharmacy-benefits",
+          "label": "Pharmacy Benefits",
+          "domainId": "specialty",
+          "description": "Pharmacy benefit management and prescription processing",
+          "ragStatus": "amber",
+          "applications": [
+            {
+              "id": "pbm-claims-processor",
+              "name": "PBM Claims Processor",
+              "portfolioId": "pharmacy-benefits",
+              "domainId": "specialty",
+              "criticality": "critical",
+              "ragStatus": "amber",
+              "owner": "Diana Reyes",
+              "teamSlack": "#team-pharmacy",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "Jenkins",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Java", "Spring Boot", "Oracle DB", "Kafka"],
+              "deploymentFrequency": "biweekly",
+              "lastDeployment": "2024-11-05T01:00:00Z",
+              "sloTarget": 99.95,
+              "sloCurrent": 99.79
+            },
+            {
+              "id": "pbm-formulary-service",
+              "name": "Formulary Management Service",
+              "portfolioId": "pharmacy-benefits",
+              "domainId": "specialty",
+              "criticality": "high",
+              "ragStatus": "green",
+              "owner": "Diana Reyes",
+              "teamSlack": "#team-pharmacy",
+              "environment": "production",
+              "environments": ["production", "staging", "qa", "development"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Python", "FastAPI", "PostgreSQL", "Redis"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-12T11:00:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.93
+            }
+          ]
+        },
+        {
+          "id": "dental-vision",
+          "label": "Dental & Vision",
+          "domainId": "specialty",
+          "description": "Dental and vision benefit administration",
+          "ragStatus": "green",
+          "applications": [
+            {
+              "id": "dv-dental-platform",
+              "name": "Dental Benefits Platform",
+              "portfolioId": "dental-vision",
+              "domainId": "specialty",
+              "criticality": "high",
+              "ragStatus": "green",
+              "owner": "Mark Sullivan",
+              "teamSlack": "#team-dental-vision",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "Jenkins",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Java", "Spring Boot", "PostgreSQL", "React"],
+              "deploymentFrequency": "biweekly",
+              "lastDeployment": "2024-11-06T19:00:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.91
+            },
+            {
+              "id": "dv-vision-portal",
+              "name": "Vision Benefits Portal",
+              "portfolioId": "dental-vision",
+              "domainId": "specialty",
+              "criticality": "medium",
+              "ragStatus": "green",
+              "owner": "Mark Sullivan",
+              "teamSlack": "#team-dental-vision",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["React", "Node.js", "PostgreSQL"],
+              "deploymentFrequency": "biweekly",
+              "lastDeployment": "2024-11-07T16:00:00Z",
+              "sloTarget": 99.5,
+              "sloCurrent": 99.68
+            }
+          ]
+        },
+        {
+          "id": "behavioral-health",
+          "label": "Behavioral Health",
+          "domainId": "specialty",
+          "description": "Behavioral and mental health services platform",
+          "ragStatus": "amber",
+          "applications": [
+            {
+              "id": "bh-care-platform",
+              "name": "Behavioral Health Care Platform",
+              "portfolioId": "behavioral-health",
+              "domainId": "specialty",
+              "criticality": "high",
+              "ragStatus": "amber",
+              "owner": "Emily Watson",
+              "teamSlack": "#team-behavioral-health",
+              "environment": "production",
+              "environments": ["production", "staging", "qa", "development"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["React", "Node.js", "PostgreSQL", "Redis"],
+              "deploymentFrequency": "weekly",
+              "lastDeployment": "2024-11-11T13:00:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.71
+            },
+            {
+              "id": "bh-telehealth",
+              "name": "Telehealth Integration Service",
+              "portfolioId": "behavioral-health",
+              "domainId": "specialty",
+              "criticality": "high",
+              "ragStatus": "green",
+              "owner": "Emily Watson",
+              "teamSlack": "#team-behavioral-health",
+              "environment": "production",
+              "environments": ["production", "staging", "qa"],
+              "toolchain": {
+                "cicd": "GitHub Actions",
+                "monitoring": "Datadog",
+                "logging": "Splunk",
+                "scm": "GitHub",
+                "artifactRepo": "JFrog Artifactory",
+                "containerPlatform": "Kubernetes",
+                "cloudProvider": "AWS"
+              },
+              "techStack": ["Node.js", "WebRTC", "PostgreSQL", "Twilio"],
+              "deploymentFrequency": "biweekly",
+              "lastDeployment": "2024-11-09T09:00:00Z",
+              "sloTarget": 99.9,
+              "sloCurrent": 99.88
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "generatedAt": "2024-11-14T12:00:00Z",
+    "totalDomains": 8,
+    "totalPortfolios": 19,
+    "totalApplications": 42,
+    "ragSummary": {
+      "green": 30,
+      "amber": 10,
+      "red": 2,
+      "unknown": 0
+    },
+    "criticalitySummary": {
+      "critical": 18,
+      "high": 16,
+      "medium": 6,
+      "low": 2,
+      "info": 0
+    }
+  }
+}

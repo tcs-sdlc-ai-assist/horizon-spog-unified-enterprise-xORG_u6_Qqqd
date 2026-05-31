@@ -1,0 +1,1149 @@
+{
+  "incidents": [
+    {
+      "id": "INC-1001",
+      "title": "Enrollment API outage causing member registration failures",
+      "severity": "Sev1",
+      "status": "Resolved",
+      "application": "ep-enrollment-engine",
+      "domain": "enrollment-billing",
+      "source": "ServiceNow",
+      "correlatedEvents": ["OBS-2001", "ITSM-3001", "DYN-4001"],
+      "timestamps": {
+        "created": "2024-11-01T03:15:00Z",
+        "resolved": "2024-11-01T05:42:00Z"
+      },
+      "mttdMinutes": 8,
+      "mttrMinutes": 147,
+      "rcaSummary": "Database connection pool exhaustion due to unoptimized query in enrollment validation service. Connection leak introduced in v8.3.0 patch.",
+      "impactedJourneys": ["Member Enrollment", "Eligibility Verification"]
+    },
+    {
+      "id": "INC-1002",
+      "title": "Claims adjudication engine high latency and timeouts",
+      "severity": "Sev1",
+      "status": "Resolved",
+      "application": "cp-claims-engine",
+      "domain": "service-core-admin",
+      "source": "Dynatrace",
+      "correlatedEvents": ["OBS-2002", "DYN-4002", "SPL-5001"],
+      "timestamps": {
+        "created": "2024-11-03T14:22:00Z",
+        "resolved": "2024-11-03T18:55:00Z"
+      },
+      "mttdMinutes": 5,
+      "mttrMinutes": 273,
+      "rcaSummary": "Drools rule engine memory leak triggered by malformed claim payload. GC pauses exceeded 30s causing cascading timeouts across downstream services.",
+      "impactedJourneys": ["Claims Submission", "Claims Adjudication", "EOB Generation"]
+    },
+    {
+      "id": "INC-1003",
+      "title": "Claims engine complete service failure during batch processing",
+      "severity": "Sev1",
+      "status": "Open",
+      "application": "cp-claims-engine",
+      "domain": "service-core-admin",
+      "source": "ServiceNow",
+      "correlatedEvents": ["OBS-2003", "ITSM-3002", "DYN-4003", "SPL-5002"],
+      "timestamps": {
+        "created": "2024-11-12T22:10:00Z",
+        "resolved": null
+      },
+      "mttdMinutes": 3,
+      "mttrMinutes": null,
+      "rcaSummary": "Oracle DB tablespace full during nightly batch adjudication run. Auto-extend disabled after last maintenance window.",
+      "impactedJourneys": ["Claims Adjudication", "Claims Submission", "Provider Payment"]
+    },
+    {
+      "id": "INC-1004",
+      "title": "EDI Transaction Hub processing delays exceeding SLA",
+      "severity": "Sev1",
+      "status": "Resolved",
+      "application": "edi-transaction-hub",
+      "domain": "horizontal-functions-integrations",
+      "source": "Splunk",
+      "correlatedEvents": ["OBS-2004", "SPL-5003", "ITSM-3003"],
+      "timestamps": {
+        "created": "2024-10-28T06:30:00Z",
+        "resolved": "2024-10-28T12:15:00Z"
+      },
+      "mttdMinutes": 15,
+      "mttrMinutes": 345,
+      "rcaSummary": "MQ channel failure between EDI hub and claims engine. Channel auto-reconnect was disabled after security patch.",
+      "impactedJourneys": ["EDI Processing", "Claims Submission"]
+    },
+    {
+      "id": "INC-1005",
+      "title": "Member Portal Android app crash on login",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "mp-mobile-android",
+      "domain": "market-facing",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4004", "OBS-2005"],
+      "timestamps": {
+        "created": "2024-11-05T09:45:00Z",
+        "resolved": "2024-11-05T13:20:00Z"
+      },
+      "mttdMinutes": 12,
+      "mttrMinutes": 215,
+      "rcaSummary": "OAuth token refresh race condition in Kotlin coroutine scope causing null pointer exception on Android 14 devices.",
+      "impactedJourneys": ["Member Login", "Member Dashboard"]
+    },
+    {
+      "id": "INC-1006",
+      "title": "Care Radius Provider Portal intermittent 503 errors",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "cr-provider-portal",
+      "domain": "market-facing",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4005", "OBS-2006", "SPL-5004"],
+      "timestamps": {
+        "created": "2024-11-08T11:00:00Z",
+        "resolved": "2024-11-08T15:30:00Z"
+      },
+      "mttdMinutes": 10,
+      "mttrMinutes": 270,
+      "rcaSummary": "Kubernetes pod OOMKilled due to memory leak in Angular SSR rendering. Heap limit exceeded during peak provider search traffic.",
+      "impactedJourneys": ["Provider Search", "Referral Management"]
+    },
+    {
+      "id": "INC-1007",
+      "title": "Referral Management Engine timeout on large referral batches",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "cr-referral-engine",
+      "domain": "market-facing",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3004", "DYN-4006"],
+      "timestamps": {
+        "created": "2024-10-30T16:20:00Z",
+        "resolved": "2024-10-31T09:45:00Z"
+      },
+      "mttdMinutes": 20,
+      "mttrMinutes": 1045,
+      "rcaSummary": "N+1 query pattern in referral batch processing causing exponential DB load. Missing index on referral_status column.",
+      "impactedJourneys": ["Referral Management", "Provider Coordination"]
+    },
+    {
+      "id": "INC-1008",
+      "title": "PBM Claims Processor rejecting valid pharmacy claims",
+      "severity": "Sev2",
+      "status": "Open",
+      "application": "pbm-claims-processor",
+      "domain": "specialty",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3005", "OBS-2007"],
+      "timestamps": {
+        "created": "2024-11-10T08:15:00Z",
+        "resolved": null
+      },
+      "mttdMinutes": 25,
+      "mttrMinutes": null,
+      "rcaSummary": "Formulary lookup cache stale after overnight refresh failure. NDC code mapping returning incorrect rejection codes.",
+      "impactedJourneys": ["Pharmacy Claims", "Prescription Processing"]
+    },
+    {
+      "id": "INC-1009",
+      "title": "Prior Authorization System slow response times",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "um-prior-auth",
+      "domain": "service-core-admin",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4007", "OBS-2008", "SPL-5005"],
+      "timestamps": {
+        "created": "2024-11-02T10:30:00Z",
+        "resolved": "2024-11-02T16:00:00Z"
+      },
+      "mttdMinutes": 8,
+      "mttrMinutes": 330,
+      "rcaSummary": "Redis cache eviction storm due to misconfigured maxmemory-policy. Clinical rules engine falling back to Oracle DB for every request.",
+      "impactedJourneys": ["Prior Authorization", "Clinical Review"]
+    },
+    {
+      "id": "INC-1010",
+      "title": "Behavioral Health Care Platform session drops during telehealth",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "bh-care-platform",
+      "domain": "specialty",
+      "source": "Splunk",
+      "correlatedEvents": ["SPL-5006", "DYN-4008"],
+      "timestamps": {
+        "created": "2024-11-06T14:00:00Z",
+        "resolved": "2024-11-06T18:30:00Z"
+      },
+      "mttdMinutes": 18,
+      "mttrMinutes": 270,
+      "rcaSummary": "WebSocket connection timeout misconfiguration in load balancer after infrastructure upgrade. Keep-alive interval set too low for telehealth sessions.",
+      "impactedJourneys": ["Telehealth Session", "Behavioral Health Intake"]
+    },
+    {
+      "id": "INC-1011",
+      "title": "Member Onboarding UI form submission failures",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "ep-member-onboarding",
+      "domain": "enrollment-billing",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4009", "OBS-2009"],
+      "timestamps": {
+        "created": "2024-11-09T07:45:00Z",
+        "resolved": "2024-11-09T11:15:00Z"
+      },
+      "mttdMinutes": 14,
+      "mttrMinutes": 210,
+      "rcaSummary": "CSRF token validation failure after CDN cache configuration change. Form submissions rejected with 403 for users with cached pages.",
+      "impactedJourneys": ["Member Enrollment", "Member Onboarding"]
+    },
+    {
+      "id": "INC-1012",
+      "title": "Claims Intake Service message queue backlog",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "cp-claims-intake",
+      "domain": "service-core-admin",
+      "source": "Splunk",
+      "correlatedEvents": ["SPL-5007", "OBS-2010", "ITSM-3006"],
+      "timestamps": {
+        "created": "2024-10-25T20:00:00Z",
+        "resolved": "2024-10-26T02:30:00Z"
+      },
+      "mttdMinutes": 22,
+      "mttrMinutes": 390,
+      "rcaSummary": "Kafka consumer group rebalancing loop caused by unstable network between AZs. Consumer lag exceeded 500K messages.",
+      "impactedJourneys": ["Claims Submission", "Claims Processing"]
+    },
+    {
+      "id": "INC-1013",
+      "title": "Enrollment Engine eligibility check timeout during open enrollment",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "ep-enrollment-engine",
+      "domain": "enrollment-billing",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3007", "DYN-4010", "SPL-5008"],
+      "timestamps": {
+        "created": "2024-10-20T08:00:00Z",
+        "resolved": "2024-10-20T14:30:00Z"
+      },
+      "mttdMinutes": 6,
+      "mttrMinutes": 390,
+      "rcaSummary": "Thread pool exhaustion in eligibility validation microservice. Synchronous HTTP calls to external eligibility vendor blocking all available threads.",
+      "impactedJourneys": ["Member Enrollment", "Eligibility Verification", "Plan Selection"]
+    },
+    {
+      "id": "INC-1014",
+      "title": "Care Radius Provider Portal data sync failure",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "cr-provider-portal",
+      "domain": "market-facing",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4011", "OBS-2011"],
+      "timestamps": {
+        "created": "2024-10-18T13:45:00Z",
+        "resolved": "2024-10-18T19:00:00Z"
+      },
+      "mttdMinutes": 30,
+      "mttrMinutes": 315,
+      "rcaSummary": "ETL pipeline failure for provider directory sync. Stale provider data served for 6 hours before detection.",
+      "impactedJourneys": ["Provider Search", "Provider Directory"]
+    },
+    {
+      "id": "INC-1015",
+      "title": "Android app elevated error rate after v3.6.0 release",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "mp-mobile-android",
+      "domain": "market-facing",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4012", "OBS-2012"],
+      "timestamps": {
+        "created": "2024-10-25T10:00:00Z",
+        "resolved": "2024-10-25T16:30:00Z"
+      },
+      "mttdMinutes": 45,
+      "mttrMinutes": 390,
+      "rcaSummary": "GraphQL schema breaking change in v3.6.0 not backward compatible with cached client queries. Rollback to v3.5.4 resolved.",
+      "impactedJourneys": ["Member Dashboard", "Claims Status", "ID Card"]
+    },
+    {
+      "id": "INC-1016",
+      "title": "PBM Claims Processor high latency during peak hours",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "pbm-claims-processor",
+      "domain": "specialty",
+      "source": "Splunk",
+      "correlatedEvents": ["SPL-5009", "DYN-4013"],
+      "timestamps": {
+        "created": "2024-10-22T11:30:00Z",
+        "resolved": "2024-10-22T17:00:00Z"
+      },
+      "mttdMinutes": 15,
+      "mttrMinutes": 330,
+      "rcaSummary": "Oracle DB query plan regression after statistics refresh. Full table scan on pharmacy_claims table instead of index scan.",
+      "impactedJourneys": ["Pharmacy Claims", "Prescription Processing"]
+    },
+    {
+      "id": "INC-1017",
+      "title": "Referral Engine duplicate referral creation",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "cr-referral-engine",
+      "domain": "market-facing",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3008", "OBS-2013"],
+      "timestamps": {
+        "created": "2024-11-04T09:00:00Z",
+        "resolved": "2024-11-04T14:45:00Z"
+      },
+      "mttdMinutes": 35,
+      "mttrMinutes": 345,
+      "rcaSummary": "Idempotency key not enforced on referral creation endpoint. Retry logic in BFF creating duplicate referrals on timeout.",
+      "impactedJourneys": ["Referral Management", "Provider Coordination"]
+    },
+    {
+      "id": "INC-1018",
+      "title": "EDI Transaction Hub 837 claim file parsing errors",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "edi-transaction-hub",
+      "domain": "horizontal-functions-integrations",
+      "source": "Splunk",
+      "correlatedEvents": ["SPL-5010", "ITSM-3009"],
+      "timestamps": {
+        "created": "2024-11-07T04:00:00Z",
+        "resolved": "2024-11-07T10:30:00Z"
+      },
+      "mttdMinutes": 40,
+      "mttrMinutes": 390,
+      "rcaSummary": "New payer submitted 837P files with non-standard segment terminators. Parser failed silently, dropping claims.",
+      "impactedJourneys": ["EDI Processing", "Claims Submission"]
+    },
+    {
+      "id": "INC-1019",
+      "title": "EDI Transaction Hub 835 remittance processing failure",
+      "severity": "Sev2",
+      "status": "Open",
+      "application": "edi-transaction-hub",
+      "domain": "horizontal-functions-integrations",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3010", "SPL-5011", "OBS-2014"],
+      "timestamps": {
+        "created": "2024-11-13T02:00:00Z",
+        "resolved": null
+      },
+      "mttdMinutes": 60,
+      "mttrMinutes": null,
+      "rcaSummary": "835 remittance file schema version mismatch with updated CMS specifications. Parsing library not updated for 2024 format changes.",
+      "impactedJourneys": ["EDI Processing", "Payment Reconciliation"]
+    },
+    {
+      "id": "INC-1020",
+      "title": "Prior Authorization System clinical rules engine error",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "um-prior-auth",
+      "domain": "service-core-admin",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4014", "OBS-2015"],
+      "timestamps": {
+        "created": "2024-10-29T15:00:00Z",
+        "resolved": "2024-10-30T08:00:00Z"
+      },
+      "mttdMinutes": 12,
+      "mttrMinutes": 1020,
+      "rcaSummary": "Clinical decision support rules incorrectly denying valid prior auth requests. Rule update deployed without adequate testing.",
+      "impactedJourneys": ["Prior Authorization", "Clinical Review", "Member Care"]
+    },
+    {
+      "id": "INC-1021",
+      "title": "Behavioral Health platform appointment scheduling errors",
+      "severity": "Sev2",
+      "status": "Open",
+      "application": "bh-care-platform",
+      "domain": "specialty",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3011", "DYN-4015"],
+      "timestamps": {
+        "created": "2024-11-11T10:00:00Z",
+        "resolved": null
+      },
+      "mttdMinutes": 20,
+      "mttrMinutes": null,
+      "rcaSummary": "Timezone conversion bug in appointment scheduling module. Appointments created with incorrect UTC offset for Pacific timezone users.",
+      "impactedJourneys": ["Appointment Scheduling", "Behavioral Health Intake"]
+    },
+    {
+      "id": "INC-1022",
+      "title": "Member Portal Web elevated P99 latency",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "mp-web-app",
+      "domain": "market-facing",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4016", "OBS-2016"],
+      "timestamps": {
+        "created": "2024-11-10T14:30:00Z",
+        "resolved": "2024-11-10T17:00:00Z"
+      },
+      "mttdMinutes": 10,
+      "mttrMinutes": 150,
+      "rcaSummary": "CDN cache invalidation caused origin server traffic spike. Auto-scaling responded within 15 minutes but P99 elevated during ramp-up.",
+      "impactedJourneys": ["Member Dashboard", "Claims Status"]
+    },
+    {
+      "id": "INC-1023",
+      "title": "Corporate Website search functionality degraded",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "cw-main-site",
+      "domain": "market-facing",
+      "source": "Splunk",
+      "correlatedEvents": ["SPL-5012", "OBS-2017"],
+      "timestamps": {
+        "created": "2024-10-30T09:15:00Z",
+        "resolved": "2024-10-30T12:00:00Z"
+      },
+      "mttdMinutes": 20,
+      "mttrMinutes": 165,
+      "rcaSummary": "Elasticsearch cluster yellow status due to unassigned replica shards after node restart. Search results incomplete for 3 hours.",
+      "impactedJourneys": ["Provider Search", "Plan Information"]
+    },
+    {
+      "id": "INC-1024",
+      "title": "Provider Directory stale data after sync failure",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "cw-provider-directory",
+      "domain": "market-facing",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3012", "OBS-2018"],
+      "timestamps": {
+        "created": "2024-10-15T06:00:00Z",
+        "resolved": "2024-10-15T10:30:00Z"
+      },
+      "mttdMinutes": 45,
+      "mttrMinutes": 270,
+      "rcaSummary": "Nightly provider data sync job failed silently. Monitoring alert threshold not configured for sync job completion.",
+      "impactedJourneys": ["Provider Search", "Provider Directory"]
+    },
+    {
+      "id": "INC-1025",
+      "title": "Billing Engine minor calculation discrepancy",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "bp-billing-engine",
+      "domain": "enrollment-billing",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3013"],
+      "timestamps": {
+        "created": "2024-10-20T11:00:00Z",
+        "resolved": "2024-10-20T15:30:00Z"
+      },
+      "mttdMinutes": 120,
+      "mttrMinutes": 270,
+      "rcaSummary": "Rounding error in premium calculation for family plans with mid-month effective dates. Affected 23 accounts with <$0.05 variance.",
+      "impactedJourneys": ["Premium Billing", "Payment Processing"]
+    },
+    {
+      "id": "INC-1026",
+      "title": "API Gateway rate limiting false positives",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "ag-api-gateway",
+      "domain": "horizontal-functions-integrations",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4017", "SPL-5013"],
+      "timestamps": {
+        "created": "2024-11-01T08:00:00Z",
+        "resolved": "2024-11-01T10:30:00Z"
+      },
+      "mttdMinutes": 5,
+      "mttrMinutes": 150,
+      "rcaSummary": "Rate limiting counter not resetting properly after Redis cluster failover. Legitimate API requests throttled for 2 hours.",
+      "impactedJourneys": ["API Access", "Member Portal", "Provider Portal"]
+    },
+    {
+      "id": "INC-1027",
+      "title": "Kafka consumer lag spike on enrollment topic",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "es-kafka-platform",
+      "domain": "horizontal-functions-integrations",
+      "source": "Splunk",
+      "correlatedEvents": ["SPL-5014", "OBS-2019"],
+      "timestamps": {
+        "created": "2024-11-03T05:00:00Z",
+        "resolved": "2024-11-03T07:30:00Z"
+      },
+      "mttdMinutes": 10,
+      "mttrMinutes": 150,
+      "rcaSummary": "Consumer group rebalancing triggered by deployment of enrollment engine. Partition reassignment caused temporary lag spike.",
+      "impactedJourneys": ["Member Enrollment", "Event Processing"]
+    },
+    {
+      "id": "INC-1028",
+      "title": "Data Lake ETL job failure for claims data",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "dp-data-lake",
+      "domain": "data-analytics",
+      "source": "Splunk",
+      "correlatedEvents": ["SPL-5015", "OBS-2020"],
+      "timestamps": {
+        "created": "2024-10-28T04:00:00Z",
+        "resolved": "2024-10-28T08:30:00Z"
+      },
+      "mttdMinutes": 30,
+      "mttrMinutes": 270,
+      "rcaSummary": "Schema drift in claims source data broke Delta Lake merge operation. New column added upstream without notification.",
+      "impactedJourneys": ["Claims Analytics", "Executive Reporting"]
+    },
+    {
+      "id": "INC-1029",
+      "title": "Analytics Hub dashboard loading timeout",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "bi-analytics-hub",
+      "domain": "data-analytics",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4018"],
+      "timestamps": {
+        "created": "2024-11-05T09:00:00Z",
+        "resolved": "2024-11-05T11:30:00Z"
+      },
+      "mttdMinutes": 15,
+      "mttrMinutes": 150,
+      "rcaSummary": "Snowflake warehouse auto-suspend caused cold start delays. Dashboard queries timing out during warehouse resume.",
+      "impactedJourneys": ["Executive Reporting", "Analytics Dashboard"]
+    },
+    {
+      "id": "INC-1030",
+      "title": "Eligibility Verification Service intermittent failures",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "ep-eligibility-service",
+      "domain": "enrollment-billing",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4019", "OBS-2021"],
+      "timestamps": {
+        "created": "2024-10-22T13:00:00Z",
+        "resolved": "2024-10-22T15:45:00Z"
+      },
+      "mttdMinutes": 8,
+      "mttrMinutes": 165,
+      "rcaSummary": "Circuit breaker tripping on external eligibility vendor API due to increased response times. Threshold too aggressive for vendor SLA.",
+      "impactedJourneys": ["Eligibility Verification", "Member Enrollment"]
+    },
+    {
+      "id": "INC-1031",
+      "title": "Dental Benefits Platform claim form rendering issue",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "dv-dental-platform",
+      "domain": "specialty",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3014"],
+      "timestamps": {
+        "created": "2024-11-02T10:00:00Z",
+        "resolved": "2024-11-02T13:00:00Z"
+      },
+      "mttdMinutes": 30,
+      "mttrMinutes": 180,
+      "rcaSummary": "CSS rendering issue in dental claim form on Safari browsers. Flexbox layout breaking on iOS 17.1 update.",
+      "impactedJourneys": ["Dental Claims", "Dental Benefits"]
+    },
+    {
+      "id": "INC-1032",
+      "title": "Formulary Management Service cache inconsistency",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "pbm-formulary-service",
+      "domain": "specialty",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4020", "OBS-2022"],
+      "timestamps": {
+        "created": "2024-10-29T08:00:00Z",
+        "resolved": "2024-10-29T11:30:00Z"
+      },
+      "mttdMinutes": 15,
+      "mttrMinutes": 210,
+      "rcaSummary": "Redis cache replication lag causing inconsistent formulary lookups across pods. Some members seeing outdated drug coverage information.",
+      "impactedJourneys": ["Formulary Lookup", "Prescription Processing"]
+    },
+    {
+      "id": "INC-1033",
+      "title": "Telehealth Integration Service video quality degradation",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "bh-telehealth",
+      "domain": "specialty",
+      "source": "Splunk",
+      "correlatedEvents": ["SPL-5016", "DYN-4021"],
+      "timestamps": {
+        "created": "2024-10-26T14:00:00Z",
+        "resolved": "2024-10-26T16:30:00Z"
+      },
+      "mttdMinutes": 20,
+      "mttrMinutes": 150,
+      "rcaSummary": "Twilio TURN server region failover caused temporary video quality degradation. Fallback to secondary region resolved within 2 hours.",
+      "impactedJourneys": ["Telehealth Session"]
+    },
+    {
+      "id": "INC-1034",
+      "title": "Network Adequacy API response time degradation",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "cr-network-api",
+      "domain": "market-facing",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4022"],
+      "timestamps": {
+        "created": "2024-11-06T11:00:00Z",
+        "resolved": "2024-11-06T13:30:00Z"
+      },
+      "mttdMinutes": 10,
+      "mttrMinutes": 150,
+      "rcaSummary": "PostgreSQL vacuum process running during peak hours causing table bloat and slow queries. Autovacuum schedule adjusted.",
+      "impactedJourneys": ["Network Adequacy", "Provider Search"]
+    },
+    {
+      "id": "INC-1035",
+      "title": "Member Portal BFF GraphQL query performance regression",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "mp-bff",
+      "domain": "market-facing",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4023", "OBS-2023"],
+      "timestamps": {
+        "created": "2024-11-12T10:00:00Z",
+        "resolved": "2024-11-12T12:30:00Z"
+      },
+      "mttdMinutes": 8,
+      "mttrMinutes": 150,
+      "rcaSummary": "N+1 query in GraphQL resolver for member claims history. DataLoader not properly batching requests after refactor.",
+      "impactedJourneys": ["Member Dashboard", "Claims History"]
+    },
+    {
+      "id": "INC-1036",
+      "title": "ETL Orchestrator Airflow DAG failure",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "dp-etl-orchestrator",
+      "domain": "data-analytics",
+      "source": "Splunk",
+      "correlatedEvents": ["SPL-5017", "OBS-2024"],
+      "timestamps": {
+        "created": "2024-11-08T03:00:00Z",
+        "resolved": "2024-11-08T06:30:00Z"
+      },
+      "mttdMinutes": 15,
+      "mttrMinutes": 210,
+      "rcaSummary": "Airflow scheduler memory pressure causing DAG parsing delays. Worker pods not scaling due to HPA metric lag.",
+      "impactedJourneys": ["Data Pipeline", "Analytics Refresh"]
+    },
+    {
+      "id": "INC-1037",
+      "title": "RBAC Service permission cache stale after role update",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "ia-rbac-service",
+      "domain": "shared-platforms",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3015", "OBS-2025"],
+      "timestamps": {
+        "created": "2024-10-31T09:00:00Z",
+        "resolved": "2024-10-31T11:00:00Z"
+      },
+      "mttdMinutes": 25,
+      "mttrMinutes": 120,
+      "rcaSummary": "gRPC cache invalidation event not propagating to all pods after role permission update. Users retaining old permissions for up to 30 minutes.",
+      "impactedJourneys": ["Access Management", "User Authorization"]
+    },
+    {
+      "id": "INC-1038",
+      "title": "Monitoring Stack metric ingestion delay",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "obs-monitoring-stack",
+      "domain": "shared-platforms",
+      "source": "Splunk",
+      "correlatedEvents": ["SPL-5018"],
+      "timestamps": {
+        "created": "2024-11-04T02:00:00Z",
+        "resolved": "2024-11-04T04:30:00Z"
+      },
+      "mttdMinutes": 10,
+      "mttrMinutes": 150,
+      "rcaSummary": "Datadog agent version mismatch after cluster upgrade causing metric submission delays. Agents auto-updated within 2 hours.",
+      "impactedJourneys": ["Monitoring", "Alerting"]
+    },
+    {
+      "id": "INC-1039",
+      "title": "Kubernetes Platform node NotReady in us-east-1c",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "k8s-platform",
+      "domain": "shared-platforms",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4024", "OBS-2026"],
+      "timestamps": {
+        "created": "2024-11-09T01:00:00Z",
+        "resolved": "2024-11-09T02:30:00Z"
+      },
+      "mttdMinutes": 3,
+      "mttrMinutes": 90,
+      "rcaSummary": "EC2 instance hardware failure in us-east-1c AZ. Node auto-replaced by ASG within 15 minutes. Pods rescheduled successfully.",
+      "impactedJourneys": ["Infrastructure", "Application Hosting"]
+    },
+    {
+      "id": "INC-1040",
+      "title": "Event Router Service message deduplication failure",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "es-event-router",
+      "domain": "horizontal-functions-integrations",
+      "source": "Splunk",
+      "correlatedEvents": ["SPL-5019", "OBS-2027"],
+      "timestamps": {
+        "created": "2024-11-07T16:00:00Z",
+        "resolved": "2024-11-07T18:30:00Z"
+      },
+      "mttdMinutes": 12,
+      "mttrMinutes": 150,
+      "rcaSummary": "Bloom filter for message deduplication exceeded capacity. Duplicate events forwarded to downstream consumers for 2 hours.",
+      "impactedJourneys": ["Event Processing", "Data Consistency"]
+    },
+    {
+      "id": "INC-1041",
+      "title": "SAP ERP batch job scheduling conflict",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "fin-erp",
+      "domain": "corporate-functions",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3016"],
+      "timestamps": {
+        "created": "2024-10-27T05:00:00Z",
+        "resolved": "2024-10-27T08:00:00Z"
+      },
+      "mttdMinutes": 30,
+      "mttrMinutes": 180,
+      "rcaSummary": "Month-end close batch jobs conflicting with daily reconciliation jobs. Job scheduler lock contention causing delays.",
+      "impactedJourneys": ["Financial Reporting", "Month-End Close"]
+    },
+    {
+      "id": "INC-1042",
+      "title": "Workday HCM integration sync delay",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "hr-workday",
+      "domain": "corporate-functions",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3017"],
+      "timestamps": {
+        "created": "2024-11-01T07:00:00Z",
+        "resolved": "2024-11-01T10:00:00Z"
+      },
+      "mttdMinutes": 45,
+      "mttrMinutes": 180,
+      "rcaSummary": "Workday EIB integration delayed due to API rate limiting on Workday side during benefits open enrollment period.",
+      "impactedJourneys": ["HR Data Sync", "Benefits Enrollment"]
+    },
+    {
+      "id": "INC-1043",
+      "title": "Executive Dashboard slow rendering for large datasets",
+      "severity": "Sev4",
+      "status": "Resolved",
+      "application": "bi-executive-dashboard",
+      "domain": "data-analytics",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3018"],
+      "timestamps": {
+        "created": "2024-11-06T09:00:00Z",
+        "resolved": "2024-11-06T11:00:00Z"
+      },
+      "mttdMinutes": 60,
+      "mttrMinutes": 120,
+      "rcaSummary": "D3.js chart rendering performance issue with 10K+ data points. Client-side aggregation added to reduce render payload.",
+      "impactedJourneys": ["Executive Reporting"]
+    },
+    {
+      "id": "INC-1044",
+      "title": "API Developer Portal documentation out of sync",
+      "severity": "Sev4",
+      "status": "Resolved",
+      "application": "ag-developer-portal",
+      "domain": "horizontal-functions-integrations",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3019"],
+      "timestamps": {
+        "created": "2024-11-02T14:00:00Z",
+        "resolved": "2024-11-03T09:00:00Z"
+      },
+      "mttdMinutes": 240,
+      "mttrMinutes": 1140,
+      "rcaSummary": "OpenAPI spec auto-generation pipeline broken after gateway upgrade. Developer portal showing stale API documentation for 3 days.",
+      "impactedJourneys": ["Developer Experience", "API Onboarding"]
+    },
+    {
+      "id": "INC-1045",
+      "title": "Learning Management System video playback buffering",
+      "severity": "Sev4",
+      "status": "Resolved",
+      "application": "hr-learning-platform",
+      "domain": "corporate-functions",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3020"],
+      "timestamps": {
+        "created": "2024-10-24T10:00:00Z",
+        "resolved": "2024-10-24T14:00:00Z"
+      },
+      "mttdMinutes": 60,
+      "mttrMinutes": 240,
+      "rcaSummary": "S3 bucket region mismatch for video assets. Videos served from us-west-2 to primarily us-east-1 users causing latency.",
+      "impactedJourneys": ["Employee Training"]
+    },
+    {
+      "id": "INC-1046",
+      "title": "Procurement Portal search filter not working",
+      "severity": "Sev4",
+      "status": "Resolved",
+      "application": "fin-procurement",
+      "domain": "corporate-functions",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3021"],
+      "timestamps": {
+        "created": "2024-11-04T11:00:00Z",
+        "resolved": "2024-11-04T14:00:00Z"
+      },
+      "mttdMinutes": 90,
+      "mttrMinutes": 180,
+      "rcaSummary": "Django ORM filter query not handling special characters in vendor names. SQL injection protection overly aggressive.",
+      "impactedJourneys": ["Procurement", "Vendor Search"]
+    },
+    {
+      "id": "INC-1047",
+      "title": "Vision Benefits Portal PDF generation failure",
+      "severity": "Sev4",
+      "status": "Resolved",
+      "application": "dv-vision-portal",
+      "domain": "specialty",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3022"],
+      "timestamps": {
+        "created": "2024-10-28T13:00:00Z",
+        "resolved": "2024-10-28T16:00:00Z"
+      },
+      "mttdMinutes": 45,
+      "mttrMinutes": 180,
+      "rcaSummary": "PDF generation library memory leak when processing benefit summary documents with embedded images. Library version updated.",
+      "impactedJourneys": ["Vision Benefits", "Benefit Summary"]
+    },
+    {
+      "id": "INC-1048",
+      "title": "Service Mesh Istio sidecar injection failure on new namespace",
+      "severity": "Sev4",
+      "status": "Resolved",
+      "application": "k8s-service-mesh",
+      "domain": "shared-platforms",
+      "source": "Splunk",
+      "correlatedEvents": ["SPL-5020"],
+      "timestamps": {
+        "created": "2024-10-31T04:00:00Z",
+        "resolved": "2024-10-31T06:00:00Z"
+      },
+      "mttdMinutes": 15,
+      "mttrMinutes": 120,
+      "rcaSummary": "Istio sidecar injection webhook not configured for newly created namespace. Pods deployed without Envoy proxy.",
+      "impactedJourneys": ["Service Mesh", "mTLS Enforcement"]
+    },
+    {
+      "id": "INC-1049",
+      "title": "Log Aggregation Service index rotation failure",
+      "severity": "Sev4",
+      "status": "Resolved",
+      "application": "obs-log-aggregator",
+      "domain": "shared-platforms",
+      "source": "Splunk",
+      "correlatedEvents": ["SPL-5021"],
+      "timestamps": {
+        "created": "2024-11-01T03:00:00Z",
+        "resolved": "2024-11-01T05:30:00Z"
+      },
+      "mttdMinutes": 20,
+      "mttrMinutes": 150,
+      "rcaSummary": "Elasticsearch ILM policy not triggering index rollover. Disk usage approaching threshold before manual intervention.",
+      "impactedJourneys": ["Log Management", "Troubleshooting"]
+    },
+    {
+      "id": "INC-1050",
+      "title": "EOB Generator PDF formatting inconsistency",
+      "severity": "Sev4",
+      "status": "Resolved",
+      "application": "cp-eob-generator",
+      "domain": "service-core-admin",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3023"],
+      "timestamps": {
+        "created": "2024-10-18T09:00:00Z",
+        "resolved": "2024-10-18T12:00:00Z"
+      },
+      "mttdMinutes": 120,
+      "mttrMinutes": 180,
+      "rcaSummary": "Font rendering issue in EOB PDF for non-English characters. Missing Unicode font mapping in PDF template.",
+      "impactedJourneys": ["EOB Generation", "Member Communications"]
+    },
+    {
+      "id": "INC-1051",
+      "title": "UM Review Portal session timeout too aggressive",
+      "severity": "Sev4",
+      "status": "Resolved",
+      "application": "um-review-portal",
+      "domain": "service-core-admin",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3024"],
+      "timestamps": {
+        "created": "2024-11-08T10:00:00Z",
+        "resolved": "2024-11-08T12:00:00Z"
+      },
+      "mttdMinutes": 180,
+      "mttrMinutes": 120,
+      "rcaSummary": "Session timeout set to 5 minutes instead of 30 minutes after security configuration update. Clinical reviewers losing work in progress.",
+      "impactedJourneys": ["Clinical Review", "Prior Authorization"]
+    },
+    {
+      "id": "INC-1052",
+      "title": "Identity Provider token refresh latency spike",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "ia-identity-provider",
+      "domain": "shared-platforms",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4025", "OBS-2028"],
+      "timestamps": {
+        "created": "2024-11-11T08:00:00Z",
+        "resolved": "2024-11-11T09:30:00Z"
+      },
+      "mttdMinutes": 5,
+      "mttrMinutes": 90,
+      "rcaSummary": "Okta rate limiting during peak morning login window. Token refresh requests queued causing cascading auth delays across all applications.",
+      "impactedJourneys": ["User Authentication", "SSO Login"]
+    },
+    {
+      "id": "INC-1053",
+      "title": "Member Portal iOS push notification delivery failure",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "mp-mobile-ios",
+      "domain": "market-facing",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3025", "OBS-2029"],
+      "timestamps": {
+        "created": "2024-10-27T12:00:00Z",
+        "resolved": "2024-10-27T15:00:00Z"
+      },
+      "mttdMinutes": 30,
+      "mttrMinutes": 180,
+      "rcaSummary": "APNs certificate expired without renewal alert. Push notifications silently failing for iOS users for 12 hours before detection.",
+      "impactedJourneys": ["Member Notifications", "Appointment Reminders"]
+    },
+    {
+      "id": "INC-1054",
+      "title": "Payment Gateway transaction logging gap",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "bp-payment-gateway",
+      "domain": "enrollment-billing",
+      "source": "Splunk",
+      "correlatedEvents": ["SPL-5022", "ITSM-3026"],
+      "timestamps": {
+        "created": "2024-10-15T20:00:00Z",
+        "resolved": "2024-10-15T23:00:00Z"
+      },
+      "mttdMinutes": 60,
+      "mttrMinutes": 180,
+      "rcaSummary": "Structured logging configuration change dropped transaction audit fields. Payment transactions processed correctly but audit trail incomplete for 6 hours.",
+      "impactedJourneys": ["Payment Processing", "Audit Compliance"]
+    },
+    {
+      "id": "INC-1055",
+      "title": "Claims engine Drools rule deployment conflict",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "cp-claims-engine",
+      "domain": "service-core-admin",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3027", "DYN-4026", "SPL-5023"],
+      "timestamps": {
+        "created": "2024-10-15T22:00:00Z",
+        "resolved": "2024-10-16T04:00:00Z"
+      },
+      "mttdMinutes": 10,
+      "mttrMinutes": 360,
+      "rcaSummary": "Conflicting Drools rule versions deployed to production. Rule priority ordering caused incorrect claim adjudication for specific plan types. Rollback initiated.",
+      "impactedJourneys": ["Claims Adjudication", "Claims Processing"]
+    },
+    {
+      "id": "INC-1056",
+      "title": "Claims engine database connection pool exhaustion",
+      "severity": "Sev1",
+      "status": "Resolved",
+      "application": "cp-claims-engine",
+      "domain": "service-core-admin",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4027", "SPL-5024", "OBS-2030"],
+      "timestamps": {
+        "created": "2024-10-08T14:00:00Z",
+        "resolved": "2024-10-08T18:30:00Z"
+      },
+      "mttdMinutes": 4,
+      "mttrMinutes": 270,
+      "rcaSummary": "Oracle connection pool leak in claims batch processor. Connections not returned after timeout exceptions. Pool exhausted within 4 hours of batch start.",
+      "impactedJourneys": ["Claims Adjudication", "Claims Submission", "EOB Generation"]
+    },
+    {
+      "id": "INC-1057",
+      "title": "Enrollment Engine data validation bypass",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "ep-enrollment-engine",
+      "domain": "enrollment-billing",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3028", "OBS-2031"],
+      "timestamps": {
+        "created": "2024-10-12T09:00:00Z",
+        "resolved": "2024-10-12T14:00:00Z"
+      },
+      "mttdMinutes": 45,
+      "mttrMinutes": 300,
+      "rcaSummary": "Input validation bypass allowing invalid SSN formats through enrollment API. 47 records created with malformed data before detection.",
+      "impactedJourneys": ["Member Enrollment", "Data Quality"]
+    },
+    {
+      "id": "INC-1058",
+      "title": "Care Radius Provider Portal authentication loop",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "cr-provider-portal",
+      "domain": "market-facing",
+      "source": "Dynatrace",
+      "correlatedEvents": ["DYN-4028", "OBS-2032"],
+      "timestamps": {
+        "created": "2024-10-05T08:00:00Z",
+        "resolved": "2024-10-05T12:30:00Z"
+      },
+      "mttdMinutes": 15,
+      "mttrMinutes": 270,
+      "rcaSummary": "SAML assertion clock skew between IdP and SP causing authentication redirect loop. NTP sync issue on provider portal servers.",
+      "impactedJourneys": ["Provider Login", "Provider Dashboard"]
+    },
+    {
+      "id": "INC-1059",
+      "title": "Kafka platform broker disk space critical",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "es-kafka-platform",
+      "domain": "horizontal-functions-integrations",
+      "source": "Splunk",
+      "correlatedEvents": ["SPL-5025", "OBS-2033", "DYN-4029"],
+      "timestamps": {
+        "created": "2024-09-28T02:00:00Z",
+        "resolved": "2024-09-28T06:00:00Z"
+      },
+      "mttdMinutes": 8,
+      "mttrMinutes": 240,
+      "rcaSummary": "Topic retention policy misconfigured for high-volume claims topic. Log segments not being cleaned up. Broker disk at 95% capacity.",
+      "impactedJourneys": ["Event Processing", "Claims Streaming", "Enrollment Events"]
+    },
+    {
+      "id": "INC-1060",
+      "title": "Member Portal Web accessibility compliance failure",
+      "severity": "Sev3",
+      "status": "In Progress",
+      "application": "mp-web-app",
+      "domain": "market-facing",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3029"],
+      "timestamps": {
+        "created": "2024-11-13T10:00:00Z",
+        "resolved": null
+      },
+      "mttdMinutes": 720,
+      "mttrMinutes": null,
+      "rcaSummary": "WCAG 2.1 AA compliance audit identified 12 accessibility violations in claims history and benefits pages. Screen reader navigation broken on key workflows.",
+      "impactedJourneys": ["Member Dashboard", "Claims History", "Benefits Information"]
+    },
+    {
+      "id": "INC-1061",
+      "title": "Data Lake Spark job OOM during large aggregation",
+      "severity": "Sev3",
+      "status": "Resolved",
+      "application": "dp-data-lake",
+      "domain": "data-analytics",
+      "source": "Splunk",
+      "correlatedEvents": ["SPL-5026", "OBS-2034"],
+      "timestamps": {
+        "created": "2024-11-02T04:00:00Z",
+        "resolved": "2024-11-02T07:30:00Z"
+      },
+      "mttdMinutes": 15,
+      "mttrMinutes": 210,
+      "rcaSummary": "Spark executor memory insufficient for year-end claims aggregation job. Shuffle spill to disk causing 10x slowdown. Executor memory increased from 8G to 16G.",
+      "impactedJourneys": ["Claims Analytics", "Year-End Reporting"]
+    },
+    {
+      "id": "INC-1062",
+      "title": "PBM Claims Processor duplicate claim detection failure",
+      "severity": "Sev2",
+      "status": "Resolved",
+      "application": "pbm-claims-processor",
+      "domain": "specialty",
+      "source": "ServiceNow",
+      "correlatedEvents": ["ITSM-3030", "OBS-2035"],
+      "timestamps": {
+        "created": "2024-10-18T11:00:00Z",
+        "resolved": "2024-10-18T17:00:00Z"
+      },
+      "mttdMinutes": 60,
+      "mttrMinutes": 360,
+      "rcaSummary": "Duplicate claim detection hash function collision rate increased after pharmacy network expansion. 156 duplicate claims processed before detection.",
+      "impactedJourneys": ["Pharmacy Claims", "Claims Integrity"]
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "generatedAt": "2024-11-14T12:00:00Z",
+    "totalIncidents": 62,
+    "sources": ["ServiceNow", "Dynatrace", "Splunk"],
+    "severitySummary": {
+      "Sev1": 4,
+      "Sev2": 22,
+      "Sev3": 24,
+      "Sev4": 12
+    },
+    "statusSummary": {
+      "Open": 4,
+      "In Progress": 2,
+      "Resolved": 56
+    },
+    "domainSummary": {
+      "market-facing": 14,
+      "enrollment-billing": 10,
+      "service-core-admin": 12,
+      "horizontal-functions-integrations": 10,
+      "data-analytics": 6,
+      "shared-platforms": 8,
+      "specialty": 10,
+      "corporate-functions": 4
+    },
+    "averageMTTDMinutes": 38.5,
+    "averageMTTRMinutes": 225.3
+  }
+}

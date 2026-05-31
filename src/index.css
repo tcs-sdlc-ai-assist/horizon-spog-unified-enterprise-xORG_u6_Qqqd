@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply text-dark-900 bg-white antialiased;
+  }
+
+  .dark body,
+  body.dark {
+    @apply bg-dark-900 text-dark-100;
+  }
+
+  /* Custom scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-dark-400;
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    @apply bg-dark-800;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-dark-600 rounded-full;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    @apply bg-dark-500;
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.dark.300') theme('colors.dark.100');
+  }
+
+  .dark * {
+    scrollbar-color: theme('colors.dark.600') theme('colors.dark.800');
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl bg-white shadow-card transition-shadow duration-200 hover:shadow-card-hover;
+  }
+
+  .dark .card {
+    @apply bg-dark-800 shadow-none border border-dark-700;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    @apply animate-fade-in;
+  }
+
+  .animate-slide-up {
+    @apply animate-slide-up;
+  }
+
+  .animate-slide-down {
+    @apply animate-slide-down;
+  }
+}

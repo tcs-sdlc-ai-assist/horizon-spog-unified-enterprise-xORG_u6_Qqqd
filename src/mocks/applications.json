@@ -1,0 +1,3033 @@
+{
+  "applications": [
+    {
+      "id": "mp-web-app",
+      "name": "Member Portal Web",
+      "domain": "market-facing",
+      "portfolio": "member-portal",
+      "criticality": "critical",
+      "owner": "Jessica Martinez",
+      "teamSlack": "#team-member-portal",
+      "environment": "production",
+      "environments": ["production", "staging", "qa", "development"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.97,
+        "latencyP99Ms": 245,
+        "errorRate": 0.02,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 1,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 1
+      },
+      "releaseHistory": [
+        { "version": "4.12.1", "date": "2024-11-14T09:23:00Z", "status": "success", "type": "patch" },
+        { "version": "4.12.0", "date": "2024-11-11T10:00:00Z", "status": "success", "type": "minor" },
+        { "version": "4.11.3", "date": "2024-11-05T14:30:00Z", "status": "success", "type": "patch" },
+        { "version": "4.11.2", "date": "2024-10-28T09:00:00Z", "status": "success", "type": "patch" },
+        { "version": "4.11.0", "date": "2024-10-15T11:00:00Z", "status": "success", "type": "minor" }
+      ],
+      "defectCount": {
+        "total": 8,
+        "critical": 0,
+        "high": 1,
+        "medium": 4,
+        "low": 3
+      },
+      "securityPosture": {
+        "score": 92,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 1,
+        "mediumVulnerabilities": 3,
+        "lastScanDate": "2024-11-14T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["mp-bff", "ia-identity-provider", "ag-api-gateway", "es-kafka-platform"],
+      "automationMaturityScore": 88,
+      "observabilityCoverage": 95,
+      "slaAlignment": {
+        "sloTarget": 99.95,
+        "sloCurrent": 99.97,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 72
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Jest + Cypress"
+      },
+      "techStack": ["React", "Node.js", "PostgreSQL", "Redis"],
+      "deploymentFrequency": "daily",
+      "lastDeployment": "2024-11-14T09:23:00Z"
+    },
+    {
+      "id": "mp-mobile-ios",
+      "name": "Member Portal iOS",
+      "domain": "market-facing",
+      "portfolio": "member-portal",
+      "criticality": "critical",
+      "owner": "Jessica Martinez",
+      "teamSlack": "#team-member-mobile",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.92,
+        "latencyP99Ms": 310,
+        "errorRate": 0.05,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "3.8.0", "date": "2024-11-10T14:00:00Z", "status": "success", "type": "minor" },
+        { "version": "3.7.2", "date": "2024-10-27T10:00:00Z", "status": "success", "type": "patch" },
+        { "version": "3.7.0", "date": "2024-10-13T12:00:00Z", "status": "success", "type": "minor" }
+      ],
+      "defectCount": {
+        "total": 5,
+        "critical": 0,
+        "high": 0,
+        "medium": 3,
+        "low": 2
+      },
+      "securityPosture": {
+        "score": 90,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 2,
+        "lastScanDate": "2024-11-10T08:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["mp-bff", "ia-identity-provider", "ag-api-gateway"],
+      "automationMaturityScore": 82,
+      "observabilityCoverage": 88,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.92,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 65
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "App Store Connect",
+        "containerPlatform": "N/A",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "XCTest + XCUITest"
+      },
+      "techStack": ["Swift", "SwiftUI", "GraphQL"],
+      "deploymentFrequency": "biweekly",
+      "lastDeployment": "2024-11-10T14:00:00Z"
+    },
+    {
+      "id": "mp-mobile-android",
+      "name": "Member Portal Android",
+      "domain": "market-facing",
+      "portfolio": "member-portal",
+      "criticality": "critical",
+      "owner": "Jessica Martinez",
+      "teamSlack": "#team-member-mobile",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "amber",
+      "healthStatus": {
+        "overall": "amber",
+        "availability": 99.78,
+        "latencyP99Ms": 420,
+        "errorRate": 0.15,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 1,
+        "last30Days": 2,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 2
+      },
+      "releaseHistory": [
+        { "version": "3.6.1", "date": "2024-11-08T11:30:00Z", "status": "success", "type": "patch" },
+        { "version": "3.6.0", "date": "2024-10-25T09:00:00Z", "status": "rolled-back", "type": "minor" },
+        { "version": "3.5.4", "date": "2024-10-11T14:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 12,
+        "critical": 0,
+        "high": 3,
+        "medium": 5,
+        "low": 4
+      },
+      "securityPosture": {
+        "score": 84,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 2,
+        "mediumVulnerabilities": 4,
+        "lastScanDate": "2024-11-08T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["mp-bff", "ia-identity-provider", "ag-api-gateway"],
+      "automationMaturityScore": 76,
+      "observabilityCoverage": 82,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.78,
+        "slaStatus": "at-risk",
+        "errorBudgetRemainingPct": 22
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "Google Play Console",
+        "containerPlatform": "N/A",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Espresso + JUnit"
+      },
+      "techStack": ["Kotlin", "Jetpack Compose", "GraphQL"],
+      "deploymentFrequency": "biweekly",
+      "lastDeployment": "2024-11-08T11:30:00Z"
+    },
+    {
+      "id": "mp-bff",
+      "name": "Member Portal BFF",
+      "domain": "market-facing",
+      "portfolio": "member-portal",
+      "criticality": "high",
+      "owner": "David Chen",
+      "teamSlack": "#team-member-portal",
+      "environment": "production",
+      "environments": ["production", "staging", "qa", "development"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.96,
+        "latencyP99Ms": 180,
+        "errorRate": 0.03,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "2.15.0", "date": "2024-11-14T08:45:00Z", "status": "success", "type": "minor" },
+        { "version": "2.14.3", "date": "2024-11-12T09:00:00Z", "status": "success", "type": "patch" },
+        { "version": "2.14.2", "date": "2024-11-08T10:30:00Z", "status": "success", "type": "patch" },
+        { "version": "2.14.0", "date": "2024-11-01T11:00:00Z", "status": "success", "type": "minor" }
+      ],
+      "defectCount": {
+        "total": 3,
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 1
+      },
+      "securityPosture": {
+        "score": 94,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 1,
+        "lastScanDate": "2024-11-14T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ag-api-gateway", "ia-identity-provider", "es-kafka-platform", "ia-rbac-service"],
+      "automationMaturityScore": 91,
+      "observabilityCoverage": 96,
+      "slaAlignment": {
+        "sloTarget": 99.95,
+        "sloCurrent": 99.96,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 68
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Jest + Supertest"
+      },
+      "techStack": ["Node.js", "Express", "GraphQL", "Redis"],
+      "deploymentFrequency": "daily",
+      "lastDeployment": "2024-11-14T08:45:00Z"
+    },
+    {
+      "id": "cw-main-site",
+      "name": "Corporate Main Website",
+      "domain": "market-facing",
+      "portfolio": "corporate-websites",
+      "criticality": "high",
+      "owner": "Sarah Thompson",
+      "teamSlack": "#team-corp-web",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.95,
+        "latencyP99Ms": 320,
+        "errorRate": 0.01,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "6.2.0", "date": "2024-11-12T16:00:00Z", "status": "success", "type": "minor" },
+        { "version": "6.1.1", "date": "2024-11-04T10:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 4,
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 2
+      },
+      "securityPosture": {
+        "score": 91,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 2,
+        "lastScanDate": "2024-11-12T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ag-api-gateway", "ia-identity-provider"],
+      "automationMaturityScore": 85,
+      "observabilityCoverage": 90,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.95,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 80
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Jest + Playwright"
+      },
+      "techStack": ["Next.js", "React", "Contentful CMS", "PostgreSQL"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-12T16:00:00Z"
+    },
+    {
+      "id": "cw-provider-directory",
+      "name": "Provider Directory",
+      "domain": "market-facing",
+      "portfolio": "corporate-websites",
+      "criticality": "high",
+      "owner": "Sarah Thompson",
+      "teamSlack": "#team-corp-web",
+      "environment": "production",
+      "environments": ["production", "staging", "qa", "development"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.91,
+        "latencyP99Ms": 280,
+        "errorRate": 0.04,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 1
+      },
+      "releaseHistory": [
+        { "version": "2.9.0", "date": "2024-11-11T10:30:00Z", "status": "success", "type": "minor" },
+        { "version": "2.8.1", "date": "2024-10-28T14:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 6,
+        "critical": 0,
+        "high": 1,
+        "medium": 3,
+        "low": 2
+      },
+      "securityPosture": {
+        "score": 89,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 3,
+        "lastScanDate": "2024-11-11T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ag-api-gateway", "ia-identity-provider"],
+      "automationMaturityScore": 80,
+      "observabilityCoverage": 87,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.91,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 55
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Jest + Cypress"
+      },
+      "techStack": ["React", "Elasticsearch", "Node.js", "PostgreSQL"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-11T10:30:00Z"
+    },
+    {
+      "id": "cr-provider-portal",
+      "name": "Care Radius Provider Portal",
+      "domain": "market-facing",
+      "portfolio": "care-radius",
+      "criticality": "critical",
+      "owner": "Michael Rivera",
+      "teamSlack": "#team-care-radius",
+      "environment": "production",
+      "environments": ["production", "staging", "qa", "development"],
+      "ragStatus": "amber",
+      "healthStatus": {
+        "overall": "amber",
+        "availability": 99.72,
+        "latencyP99Ms": 580,
+        "errorRate": 0.21,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 1,
+        "last30Days": 3,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 3
+      },
+      "releaseHistory": [
+        { "version": "5.4.2", "date": "2024-11-13T07:15:00Z", "status": "success", "type": "patch" },
+        { "version": "5.4.1", "date": "2024-11-06T09:00:00Z", "status": "success", "type": "patch" },
+        { "version": "5.4.0", "date": "2024-10-30T11:00:00Z", "status": "rolled-back", "type": "minor" }
+      ],
+      "defectCount": {
+        "total": 18,
+        "critical": 1,
+        "high": 4,
+        "medium": 8,
+        "low": 5
+      },
+      "securityPosture": {
+        "score": 78,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 3,
+        "mediumVulnerabilities": 6,
+        "lastScanDate": "2024-11-13T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ag-api-gateway", "ia-identity-provider", "es-kafka-platform", "cr-referral-engine"],
+      "automationMaturityScore": 68,
+      "observabilityCoverage": 75,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.72,
+        "slaStatus": "at-risk",
+        "errorBudgetRemainingPct": 15
+      },
+      "toolchain": {
+        "cicd": "Jenkins",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Checkmarx",
+        "testFramework": "JUnit + Selenium"
+      },
+      "techStack": ["Angular", "Java", "Spring Boot", "Oracle DB"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-13T07:15:00Z"
+    },
+    {
+      "id": "cr-referral-engine",
+      "name": "Referral Management Engine",
+      "domain": "market-facing",
+      "portfolio": "care-radius",
+      "criticality": "high",
+      "owner": "Michael Rivera",
+      "teamSlack": "#team-care-radius",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "amber",
+      "healthStatus": {
+        "overall": "amber",
+        "availability": 99.65,
+        "latencyP99Ms": 620,
+        "errorRate": 0.28,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 2,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 2
+      },
+      "releaseHistory": [
+        { "version": "3.2.1", "date": "2024-11-07T13:00:00Z", "status": "success", "type": "patch" },
+        { "version": "3.2.0", "date": "2024-10-24T10:00:00Z", "status": "success", "type": "minor" }
+      ],
+      "defectCount": {
+        "total": 14,
+        "critical": 0,
+        "high": 3,
+        "medium": 7,
+        "low": 4
+      },
+      "securityPosture": {
+        "score": 80,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 2,
+        "mediumVulnerabilities": 5,
+        "lastScanDate": "2024-11-07T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["es-kafka-platform", "ag-api-gateway", "cr-network-api"],
+      "automationMaturityScore": 65,
+      "observabilityCoverage": 72,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.65,
+        "slaStatus": "at-risk",
+        "errorBudgetRemainingPct": 10
+      },
+      "toolchain": {
+        "cicd": "Jenkins",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Checkmarx",
+        "testFramework": "JUnit + Mockito"
+      },
+      "techStack": ["Java", "Spring Boot", "Kafka", "PostgreSQL"],
+      "deploymentFrequency": "biweekly",
+      "lastDeployment": "2024-11-07T13:00:00Z"
+    },
+    {
+      "id": "cr-network-api",
+      "name": "Network Adequacy API",
+      "domain": "market-facing",
+      "portfolio": "care-radius",
+      "criticality": "high",
+      "owner": "Michael Rivera",
+      "teamSlack": "#team-care-radius",
+      "environment": "production",
+      "environments": ["production", "staging", "qa", "development"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.93,
+        "latencyP99Ms": 195,
+        "errorRate": 0.04,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "1.8.0", "date": "2024-11-12T09:00:00Z", "status": "success", "type": "minor" },
+        { "version": "1.7.2", "date": "2024-10-29T11:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 3,
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 1
+      },
+      "securityPosture": {
+        "score": 90,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 2,
+        "lastScanDate": "2024-11-12T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ag-api-gateway", "ia-identity-provider"],
+      "automationMaturityScore": 83,
+      "observabilityCoverage": 89,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.93,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 70
+      },
+      "toolchain": {
+        "cicd": "Jenkins",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "pytest"
+      },
+      "techStack": ["Python", "FastAPI", "PostgreSQL", "Redis"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-12T09:00:00Z"
+    },
+    {
+      "id": "ep-enrollment-engine",
+      "name": "Enrollment Engine",
+      "domain": "enrollment-billing",
+      "portfolio": "enrollment-platform",
+      "criticality": "critical",
+      "owner": "Karen Liu",
+      "teamSlack": "#team-enrollment",
+      "environment": "production",
+      "environments": ["production", "staging", "qa", "development"],
+      "ragStatus": "amber",
+      "healthStatus": {
+        "overall": "amber",
+        "availability": 99.82,
+        "latencyP99Ms": 490,
+        "errorRate": 0.12,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 1,
+        "last30Days": 2,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 2
+      },
+      "releaseHistory": [
+        { "version": "8.3.1", "date": "2024-11-06T20:00:00Z", "status": "success", "type": "patch" },
+        { "version": "8.3.0", "date": "2024-10-23T19:00:00Z", "status": "success", "type": "minor" },
+        { "version": "8.2.4", "date": "2024-10-09T21:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 15,
+        "critical": 1,
+        "high": 3,
+        "medium": 6,
+        "low": 5
+      },
+      "securityPosture": {
+        "score": 82,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 2,
+        "mediumVulnerabilities": 5,
+        "lastScanDate": "2024-11-06T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["es-kafka-platform", "ag-api-gateway", "ia-identity-provider", "bp-billing-engine"],
+      "automationMaturityScore": 72,
+      "observabilityCoverage": 78,
+      "slaAlignment": {
+        "sloTarget": 99.95,
+        "sloCurrent": 99.82,
+        "slaStatus": "at-risk",
+        "errorBudgetRemainingPct": 18
+      },
+      "toolchain": {
+        "cicd": "Jenkins",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Checkmarx",
+        "testFramework": "JUnit + TestNG"
+      },
+      "techStack": ["Java", "Spring Boot", "Oracle DB", "Kafka"],
+      "deploymentFrequency": "biweekly",
+      "lastDeployment": "2024-11-06T20:00:00Z"
+    },
+    {
+      "id": "ep-eligibility-service",
+      "name": "Eligibility Verification Service",
+      "domain": "enrollment-billing",
+      "portfolio": "enrollment-platform",
+      "criticality": "critical",
+      "owner": "Karen Liu",
+      "teamSlack": "#team-enrollment",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.96,
+        "latencyP99Ms": 150,
+        "errorRate": 0.02,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "5.1.0", "date": "2024-11-11T18:30:00Z", "status": "success", "type": "minor" },
+        { "version": "5.0.3", "date": "2024-10-28T20:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 4,
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 2
+      },
+      "securityPosture": {
+        "score": 93,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 1,
+        "lastScanDate": "2024-11-11T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ag-api-gateway", "ia-identity-provider", "ep-enrollment-engine"],
+      "automationMaturityScore": 87,
+      "observabilityCoverage": 92,
+      "slaAlignment": {
+        "sloTarget": 99.95,
+        "sloCurrent": 99.96,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 75
+      },
+      "toolchain": {
+        "cicd": "Jenkins",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Checkmarx",
+        "testFramework": "JUnit + Mockito"
+      },
+      "techStack": ["Java", "Spring Boot", "Oracle DB", "Redis"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-11T18:30:00Z"
+    },
+    {
+      "id": "ep-member-onboarding",
+      "name": "Member Onboarding UI",
+      "domain": "enrollment-billing",
+      "portfolio": "enrollment-platform",
+      "criticality": "high",
+      "owner": "Karen Liu",
+      "teamSlack": "#team-enrollment",
+      "environment": "production",
+      "environments": ["production", "staging", "qa", "development"],
+      "ragStatus": "amber",
+      "healthStatus": {
+        "overall": "amber",
+        "availability": 99.75,
+        "latencyP99Ms": 380,
+        "errorRate": 0.18,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 1,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 1
+      },
+      "releaseHistory": [
+        { "version": "2.4.0", "date": "2024-11-13T14:00:00Z", "status": "success", "type": "minor" },
+        { "version": "2.3.2", "date": "2024-11-06T10:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 9,
+        "critical": 0,
+        "high": 2,
+        "medium": 4,
+        "low": 3
+      },
+      "securityPosture": {
+        "score": 85,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 1,
+        "mediumVulnerabilities": 3,
+        "lastScanDate": "2024-11-13T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ep-enrollment-engine", "ep-eligibility-service", "ia-identity-provider"],
+      "automationMaturityScore": 78,
+      "observabilityCoverage": 80,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.75,
+        "slaStatus": "at-risk",
+        "errorBudgetRemainingPct": 25
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Jest + Cypress"
+      },
+      "techStack": ["React", "TypeScript", "Node.js", "PostgreSQL"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-13T14:00:00Z"
+    },
+    {
+      "id": "bp-billing-engine",
+      "name": "Billing Engine",
+      "domain": "enrollment-billing",
+      "portfolio": "billing-payments",
+      "criticality": "critical",
+      "owner": "Robert Kim",
+      "teamSlack": "#team-billing",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.99,
+        "latencyP99Ms": 120,
+        "errorRate": 0.005,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "12.1.0", "date": "2024-11-05T22:00:00Z", "status": "success", "type": "minor" },
+        { "version": "12.0.2", "date": "2024-10-22T21:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 2,
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 1
+      },
+      "securityPosture": {
+        "score": 96,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 1,
+        "lastScanDate": "2024-11-05T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["es-kafka-platform", "ag-api-gateway", "bp-payment-gateway"],
+      "automationMaturityScore": 92,
+      "observabilityCoverage": 97,
+      "slaAlignment": {
+        "sloTarget": 99.99,
+        "sloCurrent": 99.99,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 90
+      },
+      "toolchain": {
+        "cicd": "Jenkins",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Checkmarx",
+        "testFramework": "JUnit + TestNG"
+      },
+      "techStack": ["Java", "Spring Boot", "Oracle DB", "Kafka"],
+      "deploymentFrequency": "biweekly",
+      "lastDeployment": "2024-11-05T22:00:00Z"
+    },
+    {
+      "id": "bp-payment-gateway",
+      "name": "Payment Gateway",
+      "domain": "enrollment-billing",
+      "portfolio": "billing-payments",
+      "criticality": "critical",
+      "owner": "Robert Kim",
+      "teamSlack": "#team-billing",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 100.0,
+        "latencyP99Ms": 95,
+        "errorRate": 0.0,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "7.0.1", "date": "2024-10-28T21:00:00Z", "status": "success", "type": "patch" },
+        { "version": "7.0.0", "date": "2024-10-01T20:00:00Z", "status": "success", "type": "major" }
+      ],
+      "defectCount": {
+        "total": 1,
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1
+      },
+      "securityPosture": {
+        "score": 98,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 0,
+        "lastScanDate": "2024-10-28T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ag-api-gateway", "ia-identity-provider"],
+      "automationMaturityScore": 95,
+      "observabilityCoverage": 98,
+      "slaAlignment": {
+        "sloTarget": 99.99,
+        "sloCurrent": 100.0,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 100
+      },
+      "toolchain": {
+        "cicd": "Jenkins",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Checkmarx",
+        "testFramework": "JUnit + Mockito"
+      },
+      "techStack": ["Java", "Spring Boot", "PostgreSQL", "Stripe SDK"],
+      "deploymentFrequency": "monthly",
+      "lastDeployment": "2024-10-28T21:00:00Z"
+    },
+    {
+      "id": "ag-api-gateway",
+      "name": "Enterprise API Gateway",
+      "domain": "horizontal-functions-integrations",
+      "portfolio": "api-gateway",
+      "criticality": "critical",
+      "owner": "Alex Patel",
+      "teamSlack": "#team-integration",
+      "environment": "production",
+      "environments": ["production", "staging", "qa", "development"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.99,
+        "latencyP99Ms": 45,
+        "errorRate": 0.001,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "4.5.0", "date": "2024-11-12T05:00:00Z", "status": "success", "type": "minor" },
+        { "version": "4.4.1", "date": "2024-10-29T04:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 2,
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 1
+      },
+      "securityPosture": {
+        "score": 97,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 0,
+        "lastScanDate": "2024-11-12T04:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ia-identity-provider", "ia-rbac-service", "obs-monitoring-stack"],
+      "automationMaturityScore": 96,
+      "observabilityCoverage": 99,
+      "slaAlignment": {
+        "sloTarget": 99.99,
+        "sloCurrent": 99.99,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 92
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "pytest + k6"
+      },
+      "techStack": ["Kong", "Lua", "PostgreSQL", "Redis"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-12T05:00:00Z"
+    },
+    {
+      "id": "ag-developer-portal",
+      "name": "API Developer Portal",
+      "domain": "horizontal-functions-integrations",
+      "portfolio": "api-gateway",
+      "criticality": "medium",
+      "owner": "Alex Patel",
+      "teamSlack": "#team-integration",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.88,
+        "latencyP99Ms": 350,
+        "errorRate": 0.03,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "2.3.0", "date": "2024-11-09T12:00:00Z", "status": "success", "type": "minor" },
+        { "version": "2.2.1", "date": "2024-10-26T10:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 5,
+        "critical": 0,
+        "high": 0,
+        "medium": 3,
+        "low": 2
+      },
+      "securityPosture": {
+        "score": 88,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 2,
+        "lastScanDate": "2024-11-09T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ag-api-gateway", "ia-identity-provider"],
+      "automationMaturityScore": 79,
+      "observabilityCoverage": 82,
+      "slaAlignment": {
+        "sloTarget": 99.5,
+        "sloCurrent": 99.88,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 85
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Jest + Cypress"
+      },
+      "techStack": ["React", "Node.js", "PostgreSQL"],
+      "deploymentFrequency": "biweekly",
+      "lastDeployment": "2024-11-09T12:00:00Z"
+    },
+    {
+      "id": "es-kafka-platform",
+      "name": "Kafka Streaming Platform",
+      "domain": "horizontal-functions-integrations",
+      "portfolio": "event-streaming",
+      "criticality": "critical",
+      "owner": "Alex Patel",
+      "teamSlack": "#team-streaming",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.995,
+        "latencyP99Ms": 12,
+        "errorRate": 0.001,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "3.6.0", "date": "2024-10-30T03:00:00Z", "status": "success", "type": "minor" },
+        { "version": "3.5.2", "date": "2024-09-25T02:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 1,
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0
+      },
+      "securityPosture": {
+        "score": 95,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 1,
+        "lastScanDate": "2024-10-30T02:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["k8s-platform", "obs-monitoring-stack"],
+      "automationMaturityScore": 93,
+      "observabilityCoverage": 97,
+      "slaAlignment": {
+        "sloTarget": 99.99,
+        "sloCurrent": 99.995,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 95
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "JUnit + Testcontainers"
+      },
+      "techStack": ["Apache Kafka", "Kafka Connect", "Schema Registry", "Java"],
+      "deploymentFrequency": "monthly",
+      "lastDeployment": "2024-10-30T03:00:00Z"
+    },
+    {
+      "id": "es-event-router",
+      "name": "Event Router Service",
+      "domain": "horizontal-functions-integrations",
+      "portfolio": "event-streaming",
+      "criticality": "high",
+      "owner": "Alex Patel",
+      "teamSlack": "#team-streaming",
+      "environment": "production",
+      "environments": ["production", "staging", "qa", "development"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.97,
+        "latencyP99Ms": 35,
+        "errorRate": 0.01,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "2.1.0", "date": "2024-11-13T06:00:00Z", "status": "success", "type": "minor" },
+        { "version": "2.0.4", "date": "2024-11-04T05:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 2,
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 1
+      },
+      "securityPosture": {
+        "score": 92,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 1,
+        "lastScanDate": "2024-11-13T04:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["es-kafka-platform", "ag-api-gateway", "obs-monitoring-stack"],
+      "automationMaturityScore": 89,
+      "observabilityCoverage": 93,
+      "slaAlignment": {
+        "sloTarget": 99.95,
+        "sloCurrent": 99.97,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 78
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Go test + Testcontainers"
+      },
+      "techStack": ["Go", "Kafka", "Redis", "PostgreSQL"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-13T06:00:00Z"
+    },
+    {
+      "id": "edi-transaction-hub",
+      "name": "EDI Transaction Hub",
+      "domain": "horizontal-functions-integrations",
+      "portfolio": "edi-processing",
+      "criticality": "critical",
+      "owner": "Linda Nguyen",
+      "teamSlack": "#team-edi",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "amber",
+      "healthStatus": {
+        "overall": "amber",
+        "availability": 99.71,
+        "latencyP99Ms": 850,
+        "errorRate": 0.22,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 1,
+        "last30Days": 3,
+        "sev1Last90Days": 1,
+        "sev2Last90Days": 2
+      },
+      "releaseHistory": [
+        { "version": "9.2.1", "date": "2024-10-25T02:00:00Z", "status": "success", "type": "patch" },
+        { "version": "9.2.0", "date": "2024-10-01T01:00:00Z", "status": "success", "type": "minor" }
+      ],
+      "defectCount": {
+        "total": 19,
+        "critical": 1,
+        "high": 4,
+        "medium": 9,
+        "low": 5
+      },
+      "securityPosture": {
+        "score": 74,
+        "criticalVulnerabilities": 1,
+        "highVulnerabilities": 3,
+        "mediumVulnerabilities": 7,
+        "lastScanDate": "2024-10-25T01:00:00Z",
+        "complianceStatus": "review-needed",
+        "secureSDLCCompliant": false
+      },
+      "dependencies": ["es-kafka-platform", "ag-api-gateway", "cp-claims-engine"],
+      "automationMaturityScore": 55,
+      "observabilityCoverage": 62,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.71,
+        "slaStatus": "breached",
+        "errorBudgetRemainingPct": 0
+      },
+      "toolchain": {
+        "cicd": "Jenkins",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Checkmarx",
+        "testFramework": "JUnit"
+      },
+      "techStack": ["Java", "Spring Batch", "Oracle DB", "MQ"],
+      "deploymentFrequency": "monthly",
+      "lastDeployment": "2024-10-25T02:00:00Z"
+    },
+    {
+      "id": "dp-data-lake",
+      "name": "Enterprise Data Lake",
+      "domain": "data-analytics",
+      "portfolio": "data-platform",
+      "criticality": "critical",
+      "owner": "Priya Sharma",
+      "teamSlack": "#team-data-platform",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.94,
+        "latencyP99Ms": 2100,
+        "errorRate": 0.03,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 1
+      },
+      "releaseHistory": [
+        { "version": "5.8.0", "date": "2024-11-11T04:00:00Z", "status": "success", "type": "minor" },
+        { "version": "5.7.1", "date": "2024-10-28T03:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 6,
+        "critical": 0,
+        "high": 1,
+        "medium": 3,
+        "low": 2
+      },
+      "securityPosture": {
+        "score": 90,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 2,
+        "lastScanDate": "2024-11-11T03:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["k8s-platform", "obs-monitoring-stack", "dp-etl-orchestrator"],
+      "automationMaturityScore": 86,
+      "observabilityCoverage": 88,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.94,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 72
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "pytest + Great Expectations"
+      },
+      "techStack": ["Spark", "Delta Lake", "Python", "AWS S3", "Airflow"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-11T04:00:00Z"
+    },
+    {
+      "id": "dp-etl-orchestrator",
+      "name": "ETL Orchestrator",
+      "domain": "data-analytics",
+      "portfolio": "data-platform",
+      "criticality": "high",
+      "owner": "Priya Sharma",
+      "teamSlack": "#team-data-platform",
+      "environment": "production",
+      "environments": ["production", "staging", "qa", "development"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.91,
+        "latencyP99Ms": 1500,
+        "errorRate": 0.05,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 1,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "3.4.0", "date": "2024-11-12T06:30:00Z", "status": "success", "type": "minor" },
+        { "version": "3.3.2", "date": "2024-11-01T05:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 4,
+        "critical": 0,
+        "high": 0,
+        "medium": 3,
+        "low": 1
+      },
+      "securityPosture": {
+        "score": 88,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 2,
+        "lastScanDate": "2024-11-12T05:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["dp-data-lake", "es-kafka-platform", "obs-monitoring-stack"],
+      "automationMaturityScore": 84,
+      "observabilityCoverage": 86,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.91,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 60
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "pytest"
+      },
+      "techStack": ["Apache Airflow", "Python", "PostgreSQL", "AWS Glue"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-12T06:30:00Z"
+    },
+    {
+      "id": "bi-analytics-hub",
+      "name": "Analytics Hub",
+      "domain": "data-analytics",
+      "portfolio": "bi-reporting",
+      "criticality": "high",
+      "owner": "Priya Sharma",
+      "teamSlack": "#team-analytics",
+      "environment": "production",
+      "environments": ["production", "staging"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.82,
+        "latencyP99Ms": 1200,
+        "errorRate": 0.06,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "4.1.0", "date": "2024-11-13T08:00:00Z", "status": "success", "type": "minor" },
+        { "version": "4.0.3", "date": "2024-10-30T09:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 7,
+        "critical": 0,
+        "high": 1,
+        "medium": 4,
+        "low": 2
+      },
+      "securityPosture": {
+        "score": 86,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 3,
+        "lastScanDate": "2024-11-13T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["dp-data-lake", "ia-identity-provider"],
+      "automationMaturityScore": 77,
+      "observabilityCoverage": 80,
+      "slaAlignment": {
+        "sloTarget": 99.5,
+        "sloCurrent": 99.82,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 82
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "pytest + dbt test"
+      },
+      "techStack": ["Tableau", "Snowflake", "Python", "dbt"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-13T08:00:00Z"
+    },
+    {
+      "id": "bi-executive-dashboard",
+      "name": "Executive Dashboard",
+      "domain": "data-analytics",
+      "portfolio": "bi-reporting",
+      "criticality": "medium",
+      "owner": "Priya Sharma",
+      "teamSlack": "#team-analytics",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.76,
+        "latencyP99Ms": 900,
+        "errorRate": 0.08,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "1.6.0", "date": "2024-11-08T15:00:00Z", "status": "success", "type": "minor" },
+        { "version": "1.5.2", "date": "2024-10-25T14:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 3,
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 1
+      },
+      "securityPosture": {
+        "score": 87,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 2,
+        "lastScanDate": "2024-11-08T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["dp-data-lake", "bi-analytics-hub", "ia-identity-provider"],
+      "automationMaturityScore": 74,
+      "observabilityCoverage": 78,
+      "slaAlignment": {
+        "sloTarget": 99.5,
+        "sloCurrent": 99.76,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 70
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Jest + Cypress"
+      },
+      "techStack": ["React", "D3.js", "Node.js", "Snowflake"],
+      "deploymentFrequency": "biweekly",
+      "lastDeployment": "2024-11-08T15:00:00Z"
+    },
+    {
+      "id": "cp-claims-engine",
+      "name": "Claims Adjudication Engine",
+      "domain": "service-core-admin",
+      "portfolio": "claims-processing",
+      "criticality": "critical",
+      "owner": "Thomas Wright",
+      "teamSlack": "#team-claims",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "red",
+      "healthStatus": {
+        "overall": "red",
+        "availability": 99.45,
+        "latencyP99Ms": 1800,
+        "errorRate": 0.45,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 2,
+        "last30Days": 5,
+        "sev1Last90Days": 2,
+        "sev2Last90Days": 3
+      },
+      "releaseHistory": [
+        { "version": "15.2.3", "date": "2024-10-29T01:00:00Z", "status": "success", "type": "patch" },
+        { "version": "15.2.2", "date": "2024-10-15T22:00:00Z", "status": "rolled-back", "type": "patch" },
+        { "version": "15.2.0", "date": "2024-10-01T20:00:00Z", "status": "success", "type": "minor" }
+      ],
+      "defectCount": {
+        "total": 28,
+        "critical": 3,
+        "high": 7,
+        "medium": 12,
+        "low": 6
+      },
+      "securityPosture": {
+        "score": 68,
+        "criticalVulnerabilities": 2,
+        "highVulnerabilities": 5,
+        "mediumVulnerabilities": 9,
+        "lastScanDate": "2024-10-29T00:00:00Z",
+        "complianceStatus": "non-compliant",
+        "secureSDLCCompliant": false
+      },
+      "dependencies": ["es-kafka-platform", "ag-api-gateway", "edi-transaction-hub", "bp-billing-engine"],
+      "automationMaturityScore": 52,
+      "observabilityCoverage": 58,
+      "slaAlignment": {
+        "sloTarget": 99.99,
+        "sloCurrent": 99.45,
+        "slaStatus": "breached",
+        "errorBudgetRemainingPct": 0
+      },
+      "toolchain": {
+        "cicd": "Jenkins",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Checkmarx",
+        "testFramework": "JUnit + TestNG"
+      },
+      "techStack": ["Java", "Spring Boot", "Oracle DB", "Kafka", "Drools"],
+      "deploymentFrequency": "monthly",
+      "lastDeployment": "2024-10-29T01:00:00Z"
+    },
+    {
+      "id": "cp-claims-intake",
+      "name": "Claims Intake Service",
+      "domain": "service-core-admin",
+      "portfolio": "claims-processing",
+      "criticality": "critical",
+      "owner": "Thomas Wright",
+      "teamSlack": "#team-claims",
+      "environment": "production",
+      "environments": ["production", "staging", "qa", "development"],
+      "ragStatus": "amber",
+      "healthStatus": {
+        "overall": "amber",
+        "availability": 99.81,
+        "latencyP99Ms": 520,
+        "errorRate": 0.14,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 2,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 2
+      },
+      "releaseHistory": [
+        { "version": "6.1.0", "date": "2024-11-04T23:00:00Z", "status": "success", "type": "minor" },
+        { "version": "6.0.4", "date": "2024-10-21T22:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 11,
+        "critical": 0,
+        "high": 2,
+        "medium": 6,
+        "low": 3
+      },
+      "securityPosture": {
+        "score": 79,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 2,
+        "mediumVulnerabilities": 5,
+        "lastScanDate": "2024-11-04T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["cp-claims-engine", "es-kafka-platform", "ag-api-gateway"],
+      "automationMaturityScore": 64,
+      "observabilityCoverage": 70,
+      "slaAlignment": {
+        "sloTarget": 99.95,
+        "sloCurrent": 99.81,
+        "slaStatus": "at-risk",
+        "errorBudgetRemainingPct": 12
+      },
+      "toolchain": {
+        "cicd": "Jenkins",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Checkmarx",
+        "testFramework": "JUnit + Mockito"
+      },
+      "techStack": ["Java", "Spring Boot", "Kafka", "PostgreSQL"],
+      "deploymentFrequency": "biweekly",
+      "lastDeployment": "2024-11-04T23:00:00Z"
+    },
+    {
+      "id": "cp-eob-generator",
+      "name": "EOB Generator",
+      "domain": "service-core-admin",
+      "portfolio": "claims-processing",
+      "criticality": "high",
+      "owner": "Thomas Wright",
+      "teamSlack": "#team-claims",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.92,
+        "latencyP99Ms": 3200,
+        "errorRate": 0.04,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "4.0.1", "date": "2024-10-22T02:00:00Z", "status": "success", "type": "patch" },
+        { "version": "4.0.0", "date": "2024-09-30T01:00:00Z", "status": "success", "type": "major" }
+      ],
+      "defectCount": {
+        "total": 3,
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 1
+      },
+      "securityPosture": {
+        "score": 88,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 2,
+        "lastScanDate": "2024-10-22T01:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["cp-claims-engine"],
+      "automationMaturityScore": 70,
+      "observabilityCoverage": 75,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.92,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 65
+      },
+      "toolchain": {
+        "cicd": "Jenkins",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Checkmarx",
+        "testFramework": "JUnit"
+      },
+      "techStack": ["Java", "Spring Batch", "Oracle DB", "AWS S3"],
+      "deploymentFrequency": "monthly",
+      "lastDeployment": "2024-10-22T02:00:00Z"
+    },
+    {
+      "id": "um-prior-auth",
+      "name": "Prior Authorization System",
+      "domain": "service-core-admin",
+      "portfolio": "utilization-management",
+      "criticality": "critical",
+      "owner": "Angela Foster",
+      "teamSlack": "#team-um",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "amber",
+      "healthStatus": {
+        "overall": "amber",
+        "availability": 99.78,
+        "latencyP99Ms": 680,
+        "errorRate": 0.16,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 1,
+        "last30Days": 2,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 2
+      },
+      "releaseHistory": [
+        { "version": "7.5.1", "date": "2024-11-04T20:00:00Z", "status": "success", "type": "patch" },
+        { "version": "7.5.0", "date": "2024-10-21T19:00:00Z", "status": "success", "type": "minor" }
+      ],
+      "defectCount": {
+        "total": 13,
+        "critical": 0,
+        "high": 3,
+        "medium": 6,
+        "low": 4
+      },
+      "securityPosture": {
+        "score": 81,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 1,
+        "mediumVulnerabilities": 4,
+        "lastScanDate": "2024-11-04T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["cp-claims-engine", "ag-api-gateway", "ia-identity-provider"],
+      "automationMaturityScore": 66,
+      "observabilityCoverage": 73,
+      "slaAlignment": {
+        "sloTarget": 99.95,
+        "sloCurrent": 99.78,
+        "slaStatus": "at-risk",
+        "errorBudgetRemainingPct": 14
+      },
+      "toolchain": {
+        "cicd": "Jenkins",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Checkmarx",
+        "testFramework": "JUnit + Mockito"
+      },
+      "techStack": ["Java", "Spring Boot", "Oracle DB", "Redis"],
+      "deploymentFrequency": "biweekly",
+      "lastDeployment": "2024-11-04T20:00:00Z"
+    },
+    {
+      "id": "um-review-portal",
+      "name": "UM Review Portal",
+      "domain": "service-core-admin",
+      "portfolio": "utilization-management",
+      "criticality": "high",
+      "owner": "Angela Foster",
+      "teamSlack": "#team-um",
+      "environment": "production",
+      "environments": ["production", "staging", "qa", "development"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.91,
+        "latencyP99Ms": 340,
+        "errorRate": 0.05,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "3.2.0", "date": "2024-11-12T14:30:00Z", "status": "success", "type": "minor" },
+        { "version": "3.1.1", "date": "2024-10-29T13:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 5,
+        "critical": 0,
+        "high": 0,
+        "medium": 3,
+        "low": 2
+      },
+      "securityPosture": {
+        "score": 87,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 2,
+        "lastScanDate": "2024-11-12T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["um-prior-auth", "ia-identity-provider", "ag-api-gateway"],
+      "automationMaturityScore": 80,
+      "observabilityCoverage": 83,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.91,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 58
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Jest + Cypress"
+      },
+      "techStack": ["React", "Node.js", "PostgreSQL"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-12T14:30:00Z"
+    },
+    {
+      "id": "hr-workday",
+      "name": "Workday HCM",
+      "domain": "corporate-functions",
+      "portfolio": "hr-systems",
+      "criticality": "high",
+      "owner": "Patricia Adams",
+      "teamSlack": "#team-hr-tech",
+      "environment": "production",
+      "environments": ["production", "sandbox"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.85,
+        "latencyP99Ms": 750,
+        "errorRate": 0.04,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "2024R2.1", "date": "2024-11-01T06:00:00Z", "status": "success", "type": "minor" },
+        { "version": "2024R2.0", "date": "2024-10-05T06:00:00Z", "status": "success", "type": "major" }
+      ],
+      "defectCount": {
+        "total": 2,
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 1
+      },
+      "securityPosture": {
+        "score": 91,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 1,
+        "lastScanDate": "2024-11-01T05:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ia-identity-provider"],
+      "automationMaturityScore": 70,
+      "observabilityCoverage": 65,
+      "slaAlignment": {
+        "sloTarget": 99.5,
+        "sloCurrent": 99.85,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 88
+      },
+      "toolchain": {
+        "cicd": "Workday Deploy",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "N/A",
+        "containerPlatform": "SaaS",
+        "cloudProvider": "Workday Cloud",
+        "securityScanning": "N/A",
+        "testFramework": "Workday Test Suite"
+      },
+      "techStack": ["Workday", "Workday Studio", "EIB"],
+      "deploymentFrequency": "monthly",
+      "lastDeployment": "2024-11-01T06:00:00Z"
+    },
+    {
+      "id": "hr-learning-platform",
+      "name": "Learning Management System",
+      "domain": "corporate-functions",
+      "portfolio": "hr-systems",
+      "criticality": "medium",
+      "owner": "Patricia Adams",
+      "teamSlack": "#team-hr-tech",
+      "environment": "production",
+      "environments": ["production", "staging"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.65,
+        "latencyP99Ms": 450,
+        "errorRate": 0.07,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "2.8.0", "date": "2024-11-07T10:00:00Z", "status": "success", "type": "minor" },
+        { "version": "2.7.1", "date": "2024-10-24T09:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 4,
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 2
+      },
+      "securityPosture": {
+        "score": 85,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 2,
+        "lastScanDate": "2024-11-07T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ia-identity-provider"],
+      "automationMaturityScore": 72,
+      "observabilityCoverage": 74,
+      "slaAlignment": {
+        "sloTarget": 99.0,
+        "sloCurrent": 99.65,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 85
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Jest + Cypress"
+      },
+      "techStack": ["React", "Node.js", "PostgreSQL", "AWS S3"],
+      "deploymentFrequency": "biweekly",
+      "lastDeployment": "2024-11-07T10:00:00Z"
+    },
+    {
+      "id": "fin-erp",
+      "name": "SAP ERP",
+      "domain": "corporate-functions",
+      "portfolio": "finance-systems",
+      "criticality": "critical",
+      "owner": "James O'Brien",
+      "teamSlack": "#team-finance-tech",
+      "environment": "production",
+      "environments": ["production", "qa", "sandbox"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.93,
+        "latencyP99Ms": 1100,
+        "errorRate": 0.02,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "S4H-2024.10", "date": "2024-10-27T04:00:00Z", "status": "success", "type": "minor" },
+        { "version": "S4H-2024.09", "date": "2024-09-29T04:00:00Z", "status": "success", "type": "minor" }
+      ],
+      "defectCount": {
+        "total": 3,
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 1
+      },
+      "securityPosture": {
+        "score": 89,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 2,
+        "lastScanDate": "2024-10-27T03:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ia-identity-provider"],
+      "automationMaturityScore": 60,
+      "observabilityCoverage": 68,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.93,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 75
+      },
+      "toolchain": {
+        "cicd": "SAP Transport",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "N/A",
+        "containerPlatform": "On-Premise",
+        "cloudProvider": "Hybrid",
+        "securityScanning": "Fortify",
+        "testFramework": "SAP Unit Test"
+      },
+      "techStack": ["SAP S/4HANA", "ABAP", "SAP HANA DB"],
+      "deploymentFrequency": "monthly",
+      "lastDeployment": "2024-10-27T04:00:00Z"
+    },
+    {
+      "id": "fin-procurement",
+      "name": "Procurement Portal",
+      "domain": "corporate-functions",
+      "portfolio": "finance-systems",
+      "criticality": "medium",
+      "owner": "James O'Brien",
+      "teamSlack": "#team-finance-tech",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.72,
+        "latencyP99Ms": 480,
+        "errorRate": 0.06,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "1.12.0", "date": "2024-11-06T12:00:00Z", "status": "success", "type": "minor" },
+        { "version": "1.11.2", "date": "2024-10-23T11:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 5,
+        "critical": 0,
+        "high": 0,
+        "medium": 3,
+        "low": 2
+      },
+      "securityPosture": {
+        "score": 86,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 2,
+        "lastScanDate": "2024-11-06T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["fin-erp", "ia-identity-provider"],
+      "automationMaturityScore": 75,
+      "observabilityCoverage": 77,
+      "slaAlignment": {
+        "sloTarget": 99.5,
+        "sloCurrent": 99.72,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 78
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "pytest + Selenium"
+      },
+      "techStack": ["React", "Python", "Django", "PostgreSQL"],
+      "deploymentFrequency": "biweekly",
+      "lastDeployment": "2024-11-06T12:00:00Z"
+    },
+    {
+      "id": "ia-identity-provider",
+      "name": "Enterprise Identity Provider",
+      "domain": "shared-platforms",
+      "portfolio": "identity-access",
+      "criticality": "critical",
+      "owner": "Chris Donovan",
+      "teamSlack": "#team-identity",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.995,
+        "latencyP99Ms": 55,
+        "errorRate": 0.001,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "6.3.0", "date": "2024-11-13T04:00:00Z", "status": "success", "type": "minor" },
+        { "version": "6.2.1", "date": "2024-10-30T03:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 1,
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0
+      },
+      "securityPosture": {
+        "score": 98,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 0,
+        "lastScanDate": "2024-11-13T03:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["k8s-platform", "obs-monitoring-stack"],
+      "automationMaturityScore": 97,
+      "observabilityCoverage": 99,
+      "slaAlignment": {
+        "sloTarget": 99.99,
+        "sloCurrent": 99.995,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 95
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Jest + Supertest"
+      },
+      "techStack": ["Okta", "Node.js", "PostgreSQL", "Redis"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-13T04:00:00Z"
+    },
+    {
+      "id": "ia-rbac-service",
+      "name": "RBAC Authorization Service",
+      "domain": "shared-platforms",
+      "portfolio": "identity-access",
+      "criticality": "critical",
+      "owner": "Chris Donovan",
+      "teamSlack": "#team-identity",
+      "environment": "production",
+      "environments": ["production", "staging", "qa", "development"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.99,
+        "latencyP99Ms": 28,
+        "errorRate": 0.002,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "3.1.0", "date": "2024-11-12T03:30:00Z", "status": "success", "type": "minor" },
+        { "version": "3.0.2", "date": "2024-10-29T02:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 1,
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1
+      },
+      "securityPosture": {
+        "score": 97,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 0,
+        "lastScanDate": "2024-11-12T02:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ia-identity-provider", "k8s-platform"],
+      "automationMaturityScore": 94,
+      "observabilityCoverage": 96,
+      "slaAlignment": {
+        "sloTarget": 99.99,
+        "sloCurrent": 99.99,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 90
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Go test + Testify"
+      },
+      "techStack": ["Go", "PostgreSQL", "Redis", "gRPC"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-12T03:30:00Z"
+    },
+    {
+      "id": "obs-monitoring-stack",
+      "name": "Monitoring Stack",
+      "domain": "shared-platforms",
+      "portfolio": "observability-platform",
+      "criticality": "critical",
+      "owner": "Raj Mehta",
+      "teamSlack": "#team-observability",
+      "environment": "production",
+      "environments": ["production", "staging"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.98,
+        "latencyP99Ms": 85,
+        "errorRate": 0.005,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "5.2.0", "date": "2024-11-11T05:00:00Z", "status": "success", "type": "minor" },
+        { "version": "5.1.1", "date": "2024-10-28T04:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 2,
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 1
+      },
+      "securityPosture": {
+        "score": 93,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 1,
+        "lastScanDate": "2024-11-11T04:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["k8s-platform"],
+      "automationMaturityScore": 91,
+      "observabilityCoverage": 100,
+      "slaAlignment": {
+        "sloTarget": 99.95,
+        "sloCurrent": 99.98,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 85
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "pytest + k6"
+      },
+      "techStack": ["Datadog", "Prometheus", "Grafana", "OpenTelemetry"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-11T05:00:00Z"
+    },
+    {
+      "id": "obs-log-aggregator",
+      "name": "Log Aggregation Service",
+      "domain": "shared-platforms",
+      "portfolio": "observability-platform",
+      "criticality": "high",
+      "owner": "Raj Mehta",
+      "teamSlack": "#team-observability",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.94,
+        "latencyP99Ms": 120,
+        "errorRate": 0.02,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "3.4.0", "date": "2024-11-08T04:00:00Z", "status": "success", "type": "minor" },
+        { "version": "3.3.1", "date": "2024-10-25T03:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 3,
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 1
+      },
+      "securityPosture": {
+        "score": 90,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 1,
+        "lastScanDate": "2024-11-08T03:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["k8s-platform", "obs-monitoring-stack"],
+      "automationMaturityScore": 85,
+      "observabilityCoverage": 95,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.94,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 76
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "pytest"
+      },
+      "techStack": ["Splunk", "Fluentd", "Elasticsearch", "Kubernetes"],
+      "deploymentFrequency": "biweekly",
+      "lastDeployment": "2024-11-08T04:00:00Z"
+    },
+    {
+      "id": "k8s-platform",
+      "name": "Kubernetes Platform",
+      "domain": "shared-platforms",
+      "portfolio": "container-platform",
+      "criticality": "critical",
+      "owner": "Raj Mehta",
+      "teamSlack": "#team-platform",
+      "environment": "production",
+      "environments": ["production", "staging", "qa", "development"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.99,
+        "latencyP99Ms": 15,
+        "errorRate": 0.001,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "1.28.3", "date": "2024-11-13T02:00:00Z", "status": "success", "type": "patch" },
+        { "version": "1.28.2", "date": "2024-10-30T01:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 2,
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 1
+      },
+      "securityPosture": {
+        "score": 96,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 1,
+        "lastScanDate": "2024-11-13T01:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": [],
+      "automationMaturityScore": 95,
+      "observabilityCoverage": 98,
+      "slaAlignment": {
+        "sloTarget": 99.99,
+        "sloCurrent": 99.99,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 92
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "EKS",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Go test + Terratest"
+      },
+      "techStack": ["Kubernetes", "Helm", "ArgoCD", "Terraform"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-13T02:00:00Z"
+    },
+    {
+      "id": "k8s-service-mesh",
+      "name": "Service Mesh (Istio)",
+      "domain": "shared-platforms",
+      "portfolio": "container-platform",
+      "criticality": "high",
+      "owner": "Raj Mehta",
+      "teamSlack": "#team-platform",
+      "environment": "production",
+      "environments": ["production", "staging"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.97,
+        "latencyP99Ms": 8,
+        "errorRate": 0.002,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "1.20.1", "date": "2024-10-31T03:00:00Z", "status": "success", "type": "patch" },
+        { "version": "1.20.0", "date": "2024-10-01T02:00:00Z", "status": "success", "type": "minor" }
+      ],
+      "defectCount": {
+        "total": 1,
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0
+      },
+      "securityPosture": {
+        "score": 94,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 1,
+        "lastScanDate": "2024-10-31T02:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["k8s-platform"],
+      "automationMaturityScore": 90,
+      "observabilityCoverage": 94,
+      "slaAlignment": {
+        "sloTarget": 99.95,
+        "sloCurrent": 99.97,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 80
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "EKS",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Go test + Istioctl analyze"
+      },
+      "techStack": ["Istio", "Envoy", "Kubernetes", "Kiali"],
+      "deploymentFrequency": "monthly",
+      "lastDeployment": "2024-10-31T03:00:00Z"
+    },
+    {
+      "id": "pbm-claims-processor",
+      "name": "PBM Claims Processor",
+      "domain": "specialty",
+      "portfolio": "pharmacy-benefits",
+      "criticality": "critical",
+      "owner": "Diana Reyes",
+      "teamSlack": "#team-pharmacy",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "amber",
+      "healthStatus": {
+        "overall": "amber",
+        "availability": 99.79,
+        "latencyP99Ms": 720,
+        "errorRate": 0.15,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 1,
+        "last30Days": 2,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 2
+      },
+      "releaseHistory": [
+        { "version": "10.4.1", "date": "2024-11-05T01:00:00Z", "status": "success", "type": "patch" },
+        { "version": "10.4.0", "date": "2024-10-22T00:00:00Z", "status": "success", "type": "minor" }
+      ],
+      "defectCount": {
+        "total": 16,
+        "critical": 1,
+        "high": 3,
+        "medium": 7,
+        "low": 5
+      },
+      "securityPosture": {
+        "score": 76,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 2,
+        "mediumVulnerabilities": 5,
+        "lastScanDate": "2024-11-05T00:00:00Z",
+        "complianceStatus": "review-needed",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["es-kafka-platform", "ag-api-gateway", "cp-claims-engine"],
+      "automationMaturityScore": 62,
+      "observabilityCoverage": 68,
+      "slaAlignment": {
+        "sloTarget": 99.95,
+        "sloCurrent": 99.79,
+        "slaStatus": "at-risk",
+        "errorBudgetRemainingPct": 8
+      },
+      "toolchain": {
+        "cicd": "Jenkins",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Checkmarx",
+        "testFramework": "JUnit + TestNG"
+      },
+      "techStack": ["Java", "Spring Boot", "Oracle DB", "Kafka"],
+      "deploymentFrequency": "biweekly",
+      "lastDeployment": "2024-11-05T01:00:00Z"
+    },
+    {
+      "id": "pbm-formulary-service",
+      "name": "Formulary Management Service",
+      "domain": "specialty",
+      "portfolio": "pharmacy-benefits",
+      "criticality": "high",
+      "owner": "Diana Reyes",
+      "teamSlack": "#team-pharmacy",
+      "environment": "production",
+      "environments": ["production", "staging", "qa", "development"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.93,
+        "latencyP99Ms": 210,
+        "errorRate": 0.03,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "2.6.0", "date": "2024-11-12T11:00:00Z", "status": "success", "type": "minor" },
+        { "version": "2.5.1", "date": "2024-10-29T10:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 4,
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 2
+      },
+      "securityPosture": {
+        "score": 89,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 2,
+        "lastScanDate": "2024-11-12T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ag-api-gateway", "ia-identity-provider"],
+      "automationMaturityScore": 81,
+      "observabilityCoverage": 84,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.93,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 72
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "pytest"
+      },
+      "techStack": ["Python", "FastAPI", "PostgreSQL", "Redis"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-12T11:00:00Z"
+    },
+    {
+      "id": "dv-dental-platform",
+      "name": "Dental Benefits Platform",
+      "domain": "specialty",
+      "portfolio": "dental-vision",
+      "criticality": "high",
+      "owner": "Mark Sullivan",
+      "teamSlack": "#team-dental-vision",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.91,
+        "latencyP99Ms": 390,
+        "errorRate": 0.05,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "4.3.0", "date": "2024-11-06T19:00:00Z", "status": "success", "type": "minor" },
+        { "version": "4.2.2", "date": "2024-10-23T18:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 5,
+        "critical": 0,
+        "high": 0,
+        "medium": 3,
+        "low": 2
+      },
+      "securityPosture": {
+        "score": 87,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 2,
+        "lastScanDate": "2024-11-06T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ag-api-gateway", "ia-identity-provider", "cp-claims-engine"],
+      "automationMaturityScore": 76,
+      "observabilityCoverage": 79,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.91,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 60
+      },
+      "toolchain": {
+        "cicd": "Jenkins",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Checkmarx",
+        "testFramework": "JUnit + Cypress"
+      },
+      "techStack": ["Java", "Spring Boot", "PostgreSQL", "React"],
+      "deploymentFrequency": "biweekly",
+      "lastDeployment": "2024-11-06T19:00:00Z"
+    },
+    {
+      "id": "dv-vision-portal",
+      "name": "Vision Benefits Portal",
+      "domain": "specialty",
+      "portfolio": "dental-vision",
+      "criticality": "medium",
+      "owner": "Mark Sullivan",
+      "teamSlack": "#team-dental-vision",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.68,
+        "latencyP99Ms": 410,
+        "errorRate": 0.09,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "1.9.0", "date": "2024-11-07T16:00:00Z", "status": "success", "type": "minor" },
+        { "version": "1.8.1", "date": "2024-10-24T15:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 3,
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 1
+      },
+      "securityPosture": {
+        "score": 84,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 2,
+        "lastScanDate": "2024-11-07T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ag-api-gateway", "ia-identity-provider"],
+      "automationMaturityScore": 73,
+      "observabilityCoverage": 76,
+      "slaAlignment": {
+        "sloTarget": 99.5,
+        "sloCurrent": 99.68,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 72
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Jest + Cypress"
+      },
+      "techStack": ["React", "Node.js", "PostgreSQL"],
+      "deploymentFrequency": "biweekly",
+      "lastDeployment": "2024-11-07T16:00:00Z"
+    },
+    {
+      "id": "bh-care-platform",
+      "name": "Behavioral Health Care Platform",
+      "domain": "specialty",
+      "portfolio": "behavioral-health",
+      "criticality": "high",
+      "owner": "Emily Watson",
+      "teamSlack": "#team-behavioral-health",
+      "environment": "production",
+      "environments": ["production", "staging", "qa", "development"],
+      "ragStatus": "amber",
+      "healthStatus": {
+        "overall": "amber",
+        "availability": 99.71,
+        "latencyP99Ms": 550,
+        "errorRate": 0.19,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 1,
+        "last30Days": 2,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 1
+      },
+      "releaseHistory": [
+        { "version": "2.5.0", "date": "2024-11-11T13:00:00Z", "status": "success", "type": "minor" },
+        { "version": "2.4.2", "date": "2024-10-28T12:00:00Z", "status": "success", "type": "patch" },
+        { "version": "2.4.1", "date": "2024-10-21T11:00:00Z", "status": "rolled-back", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 10,
+        "critical": 0,
+        "high": 2,
+        "medium": 5,
+        "low": 3
+      },
+      "securityPosture": {
+        "score": 82,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 1,
+        "mediumVulnerabilities": 4,
+        "lastScanDate": "2024-11-11T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ag-api-gateway", "ia-identity-provider", "bh-telehealth"],
+      "automationMaturityScore": 71,
+      "observabilityCoverage": 74,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.71,
+        "slaStatus": "at-risk",
+        "errorBudgetRemainingPct": 12
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Jest + Cypress"
+      },
+      "techStack": ["React", "Node.js", "PostgreSQL", "Redis"],
+      "deploymentFrequency": "weekly",
+      "lastDeployment": "2024-11-11T13:00:00Z"
+    },
+    {
+      "id": "bh-telehealth",
+      "name": "Telehealth Integration Service",
+      "domain": "specialty",
+      "portfolio": "behavioral-health",
+      "criticality": "high",
+      "owner": "Emily Watson",
+      "teamSlack": "#team-behavioral-health",
+      "environment": "production",
+      "environments": ["production", "staging", "qa"],
+      "ragStatus": "green",
+      "healthStatus": {
+        "overall": "green",
+        "availability": 99.88,
+        "latencyP99Ms": 290,
+        "errorRate": 0.06,
+        "lastChecked": "2024-11-14T12:00:00Z"
+      },
+      "incidentCount": {
+        "active": 0,
+        "last30Days": 0,
+        "sev1Last90Days": 0,
+        "sev2Last90Days": 0
+      },
+      "releaseHistory": [
+        { "version": "1.7.0", "date": "2024-11-09T09:00:00Z", "status": "success", "type": "minor" },
+        { "version": "1.6.1", "date": "2024-10-26T08:00:00Z", "status": "success", "type": "patch" }
+      ],
+      "defectCount": {
+        "total": 4,
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 2
+      },
+      "securityPosture": {
+        "score": 88,
+        "criticalVulnerabilities": 0,
+        "highVulnerabilities": 0,
+        "mediumVulnerabilities": 2,
+        "lastScanDate": "2024-11-09T06:00:00Z",
+        "complianceStatus": "compliant",
+        "secureSDLCCompliant": true
+      },
+      "dependencies": ["ag-api-gateway", "ia-identity-provider"],
+      "automationMaturityScore": 78,
+      "observabilityCoverage": 81,
+      "slaAlignment": {
+        "sloTarget": 99.9,
+        "sloCurrent": 99.88,
+        "slaStatus": "met",
+        "errorBudgetRemainingPct": 55
+      },
+      "toolchain": {
+        "cicd": "GitHub Actions",
+        "monitoring": "Datadog",
+        "logging": "Splunk",
+        "scm": "GitHub",
+        "artifactRepo": "JFrog Artifactory",
+        "containerPlatform": "Kubernetes",
+        "cloudProvider": "AWS",
+        "securityScanning": "Snyk",
+        "testFramework": "Jest + Supertest"
+      },
+      "techStack": ["Node.js", "WebRTC", "PostgreSQL", "Twilio"],
+      "deploymentFrequency": "biweekly",
+      "lastDeployment": "2024-11-09T09:00:00Z"
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "generatedAt": "2024-11-14T12:00:00Z",
+    "totalApplications": 42,
+    "ragSummary": {
+      "green": 30,
+      "amber": 10,
+      "red": 2,
+      "unknown": 0
+    },
+    "criticalitySummary": {
+      "critical": 18,
+      "high": 16,
+      "medium": 6,
+      "low": 2,
+      "info": 0
+    },
+    "slaStatusSummary": {
+      "met": 30,
+      "at-risk": 10,
+      "breached": 2
+    },
+    "averageAutomationMaturityScore": 79.8,
+    "averageObservabilityCoverage": 83.1,
+    "averageSecurityScore": 88.2
+  }
+}
