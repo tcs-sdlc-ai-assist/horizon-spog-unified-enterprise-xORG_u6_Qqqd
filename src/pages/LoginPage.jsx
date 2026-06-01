@@ -72,7 +72,7 @@ export default function LoginPage() {
       <div className="w-full max-w-5xl">
         <div className="mb-12 text-center space-y-3">
           <div className="mb-4 flex items-center justify-center">
-            <div className="bg-dark-100 rounded-xl w-[204px] h-[72px] flex items-center justify-center p-2.5 shadow-md border border-dark-250">
+            <div className="bg-white rounded-xl w-[204px] h-[72px] flex items-center justify-center p-2.5 shadow-md border border-transparent dark:border-dark-800">
               <img
                 src={logo}
                 alt="Horizon Logo"

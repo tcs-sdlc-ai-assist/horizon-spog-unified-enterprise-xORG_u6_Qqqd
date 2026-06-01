@@ -51,7 +51,7 @@ export default function TopBar({ onSearchClick }) {
     <header className="fixed top-0 left-0 right-0 h-20 bg-white dark:bg-dark-900 border-b border-dark-200 dark:border-dark-800 z-40 flex items-center justify-between pr-4 pl-0">
       {/* Brand logo */}
       <div className="flex items-center pl-[20px]">
-        <div className="bg-dark-100 rounded-xl w-[204px] h-[72px] flex items-center justify-center p-2.5 shadow-sm border border-dark-200">
+        <div className="bg-white rounded-xl w-[204px] h-[72px] flex items-center justify-center p-2.5 shadow-sm border border-transparent dark:border-dark-800">
           <img
             src={logo}
             alt="Horizon Logo"
