@@ -66,17 +66,4 @@
     @apply bg-dark-800 shadow-none border border-dark-700;
   }
 }
-
-@layer utilities {
-  .animate-fade-in {
-    @apply animate-fade-in;
-  }
-
-  .animate-slide-up {
-    @apply animate-slide-up;
-  }
-
-  .animate-slide-down {
-    @apply animate-slide-down;
-  }
-}
+

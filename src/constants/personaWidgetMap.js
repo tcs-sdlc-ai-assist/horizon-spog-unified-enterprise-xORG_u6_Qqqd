@@ -132,6 +132,14 @@ export const PERSONA_WIDGET_MAP = {
  * @returns {string[]} Array of widget IDs visible to the persona
  */
 export function getWidgetsForPersona(personaId) {
+  try {
+    const stored = localStorage.getItem(`horizon_layout_preferences_${personaId}`);
+    if (stored) {
+      return JSON.parse(stored);
+    }
+  } catch (e) {
+    // Ignore error
+  }
   return PERSONA_WIDGET_MAP[personaId] || PERSONA_WIDGET_MAP.executive;
 }
 
